@@ -1,2 +1,2 @@
 # TaskPython
-my task fron ited
+my task from ited
