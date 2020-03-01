@@ -9,21 +9,21 @@ except:
     print ('\n'
            '                Останнє введене число містить символи відмінні від цифр')
 # знаходимо максимум числа:
-if a>b and a>c and(b>c or c>b):
+if a>=b and a>=c:
     max = a
-elif b>a and b>c and (a>c or c>a):
+elif b>=a and b>=c:
     max = b
 else:
     max=c
 #знаходимо мінімум числа
-if a<b and a<c and(b>c or c>b):
+if (a<=b and a<=c) :
     min = a
-elif b<a and b<c and (a>c or c>a):
+elif b<=a and b<=c:
     min = b
 else:
     min=c
 
-# визначаємо послідовність в зротанні
+# визначаємо послідовність в зростанні
 if max==a and min ==b:
     print("числа в послідовності зростання %s, %s, %s" %(b,c,a))
 elif max==a and min ==c:
