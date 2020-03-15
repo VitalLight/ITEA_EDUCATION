@@ -6,9 +6,9 @@
 import random
 import string  # модуль містить алфавіт
 
-#  функція визначення довжини паролю
 
-def len_par ():
+#  функція визначення довжини паролю
+def len_par():
     while True:
         try:
             len_parol = int(input("Введіть дожину паролю числом "))
@@ -21,7 +21,6 @@ a = len_par()
 
 #  функція для генерації паролю
 def parol(len_par):
-
     passw = []
     for i in range(a):
         passw.append(random.choice(list(string.ascii_letters)))
