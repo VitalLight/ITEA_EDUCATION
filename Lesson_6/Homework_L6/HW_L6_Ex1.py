@@ -13,25 +13,27 @@ except ValueError:
     print("Потрібно ввести числом. Повторіть спробу ще раз  ")
     exit()
 
+
 #  функція для генерації паролю
-def parol (a):
+def parol(a):
     passw = []
     for i in range (a):
         passw.append(random.choice(list(string.ascii_letters)))
         password = ''.join(passw)
-    #print(" Пароль з функції {}".format (password))
-    return password
+        return password
+
 
 #  функція по генерації паролю
-e = parol (len_parol)
+e = parol(len_parol)
 print(e)
-# parol(len_parol)
+
 ans = input("Чи влаштовує пароль? Якщо так, то натисність 1, якщо ні, будь який інший символ   ")
 if ans == "1":
     print("Ваш пароль %s" % e)
+
 # Якщо пароль не влаштовує
 while ans != "1":
-    w= parol(len_parol)
+    w = parol(len_parol)
     print(w)
     ans = input("Чи влаштовує пароль? Якщо так, то натисність 1, якщо ні, будь який інший символ   ")
     if ans == "1":
