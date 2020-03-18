@@ -39,34 +39,30 @@ def secrchar_(sms_ord, key_ord):
         sec_char.append(schar)
     return sec_char
 
-
 secrsms = secrchar_(sms_ord, key_ord)  # масив з числами секретного повідомлення
-print(" secrsms = %s" %secrsms)
 
 # присвоєння chr символів секретному повідомленю
 def chr_(iter):
     sec_chr = []
     for i in range(len(iter)):  # ітерація по масиву кількості елем iter
-       d = iter[i]
+
+        d = iter[i]
         while d > 122:  # обчислення індекса для букви зашифрованого повідомлення
             num = 65 + d - 122
             d = num
             if 97 > num > 90:
                 num = num + 7
+
         for j in ascii_letters:  # ітерація по основних символах шифррування
-                        #print("j = first %s -%s" % (j, ord(j)))
-                        # num2 = ord(j)
+
             if ord(j) == num:
                 sec_chr.append(j)  # МАСИВ з буквеним шиформ коду
-                # print("j =  %s" % ord(j))
                 break
             else:
                 continue
-    #sec_chr.append(j)
     return sec_chr
 
 chr_(secrsms)
 sec_chr = chr_(secrsms) #  масив букв зашифорованого повідомлення
-print(" Зашифроване повідомлення  %s" %sec_chr)  #  масив букв зашифорованого повідомлення
-print(''.join(sec_chr)) #  Текст зашифорованого повідомлення
 
+print("\n Зашифроване повідомлення  --- %s---" % ''.join(sec_chr))
