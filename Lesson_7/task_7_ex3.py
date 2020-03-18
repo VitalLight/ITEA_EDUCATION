@@ -1,12 +1,25 @@
 """"
 У введеному рядкові перевірити, чи кількість голосних букв рівна кількості непарних.
 """
-golos_byk = ['а','о','у','е','и','і']
-riadok = 'Старезний, густий, предковiчний лiс на Волинi. Посеред лiсу простора галява з плакучою березою i з великим прастарим дубом.
 
+riadok = input ("Введіть будь-який вираз:  ")
 
-def filt (a):
+def filt (b):
     count = 0
-    for a in b:
-        if a:
-            count+=1
+    c = b.lower()
+    str = list(c)
+    golos_byk = ['а', 'о', 'у', 'е', 'и', 'і','я','ю','є','ї']
+    for i in str:
+        for j in golos_byk:
+            if i == j:
+                count += 1
+    return count
+
+# Kil = filt(riadok)
+
+print(riadok)
+
+if filt(riadok) % 2 == 0:
+    print("\nКількість голосних букв ---%s --- парна" % filt(riadok))
+else:
+    print("Кількість голосних букв ---%s --- НЕ ПАРНА" % filt(riadok))
