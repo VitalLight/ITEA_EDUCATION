@@ -3,13 +3,14 @@
 """
 def shufr ():
     #  символи для шифрування
-    sumbs = "'., :;1234567890АБВГҐДЕЄЖЗИІЇЙКЛМОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмопрстуфхцчшщьюя" \
+    sumbs = "'., :;\/1234567890АБВГҐДЕЄЖЗИІЇЙКЛМОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмопрстуфхцчшщьюя" \
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     l_s = list(sumbs)
     # print(len(sumbs))
 
-    sms = input("\nВведіть ПОВІДОМЛЕННЯ для шифрування (створення паролю):   ")
-    key = input("Введіть КЛЮЧ к-ть символів як у повідомленні або менше:  ")
+    sms = input("\nВведіть ПОВІДОМЛЕННЯ для генерації паролю:   ")
+
+    key = input("Введіть КЛЮЧ к-ть символів має бути як у повідомленні:  ")
     l_key = list(key)
 
 
@@ -18,16 +19,12 @@ def shufr ():
     if len(sms) >= len(key):
         c_key = len(sms)//len(key)
         ost_key = len(sms) % len(key)
-    if ost_key != 0:
         key = key*c_key + key[:ost_key:]
-        print(" \nВаш пароль буде --- %s" % key)
-    else:
-        key = key * c_key
-        print("\n Ваш пароль буде --- %s" %key )
+        print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ  --- %s" % key)
 
     if len(sms) < len(key):
         key = key[:len(sms):]
-        print(" \nВаш пароль буде --- %s" %key )
+        print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ --- %s" % key)
 
     list_sms = list(sms)
     list_key = list(key)
@@ -45,8 +42,8 @@ def shufr ():
                      pass
         return a
 
-    sms_ind = ind_(list_sms)  # виводить ord символи з list_sms в змінну- це числовий масив
-    key_ind = ind_(list_key)  # виводить ord символи з list_key в змінну - це числовий масив
+    sms_ind = ind_(list_sms)  # виводить  символи з list_sms в змінну- це числовий масив
+    key_ind = ind_(list_key)  # виводить  символи з list_key в змінну - це числовий масив
     # print(sms_ind, key_ind)
 
     # функція що створює масив з індексами для букв(символів) секретного повідомлення
@@ -73,8 +70,12 @@ def shufr ():
 
     secr_povid_(secrsms, l_s)
     sec_chr = secr_povid_(secrsms,l_s) #  масив букв зашифорованого повідомлення
+    parol = ''.join(sec_chr)
 
-    print("\n ЗАШИФРОВАНЕ ПОВІДОМЛЕННЯ  --- %s---" % ''.join(sec_chr))
+    # print("\n ВАШ ПАРОЛЬ     %s  " % parol)
+    return key, parol
 
-# Виклик функції
-shufr()
+
+
+
+
