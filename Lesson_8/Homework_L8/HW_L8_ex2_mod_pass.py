@@ -9,12 +9,12 @@ Password storage. Модифікувати програму генеруванн
 Коли корисувач хоче створити новий пароль, то використати код програми з 6 уроку, після генерувавння пароля попровисти
 корисувача ввести ключове слово, і дану пару ключ-значення записати у файл.
 """
-e_ = int(input(" \nДля отримання доступу в систему  створити НОВИЙ пароль ---1--- чи використати старий --- 0 ---?    "))
+e_ = input(" \nДля отримання доступу в систему  створити НОВИЙ пароль ---1--- чи використати старий --- 0 ---?    ")
 
-if e_ == 0:
+if e_ != "1":
     key = input("Введіть свій ключ доступу до паролю   ")
     l_key = len(key)
-    with open('d:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\passw_key.txt','r') as f:
+    with open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\passw_key.txt','r') as f:
         text = f.readlines()  #  створює масив елементом якого є рядок
         passw = 0
         for i in range(len(text)):
@@ -27,11 +27,11 @@ if e_ == 0:
                     exit()
         print("\npaswword = %s" % passw)
 
-elif e_ == 1:
+elif e_ == "1":
     from Lesson_8.Homework_L8.to_password_packedg.passw import shufr  #  сама запускається
     # shufr(key)
     n_key, n_parol = shufr()
     print("ВАШ ПАРОЛЬ ---  %s --- ТА КЛЮЧ  --- %s --- " %(n_parol, n_key))
-    with open('d:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\passw_key.txt','a+') as f:
+    with open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\passw_key.txt','a+') as f:
         text = f.readlines()  #  створює масив елементом якого є рядок
         f.write("\n"+n_key + " - " + n_parol)

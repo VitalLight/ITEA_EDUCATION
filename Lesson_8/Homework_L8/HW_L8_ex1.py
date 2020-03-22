@@ -14,14 +14,14 @@ def find_(o, f):
     return a
 
 print("\nПерший введениий файл")
-file1 = open('d:\\Python_ITed\Lesson_8\\Homework_L8\\packeg_for_working with file\\ex_2_.txt', 'r')
+file1 = open(r'd:\\Python_ITed\Lesson_8\\Homework_L8\\packeg_for_working with file\\ex_2_.txt', 'r')
 test1 = file1.read()
 find_(find_object, test1)
 # print("Вказане слово --- %s --- згадується  %s разів у файлі " % (find_object))
 file1.close()
 
 print("\nДругий введениий файл")
-with open('d:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\kind_wine.txt', 'r') as file2:
+with open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\kind_wine.txt', 'r') as file2:
     test2 = file2.read()
 
 find_(find_object, test2)

@@ -10,7 +10,7 @@ def shufr ():
 
     sms = input("\nВведіть ПОВІДОМЛЕННЯ для генерації паролю:   ")
 
-    key = input("Введіть КЛЮЧ к-ть символів має бути як у повідомленні:  ")
+    key = input("Введіть КЛЮЧ:  ")
     l_key = list(key)
 
 
@@ -19,15 +19,15 @@ def shufr ():
     if len(sms) >= len(key):
         c_key = len(sms)//len(key)
         ost_key = len(sms) % len(key)
-        key = key*c_key + key[:ost_key:]
-        print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ  --- %s" % key)
+        key1 = key*c_key + key[:ost_key:]
+        # print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ  --- %s" % key1)
 
     if len(sms) < len(key):
-        key = key[:len(sms):]
-        print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ --- %s" % key)
+        key1 = key[:len(sms):]
+        # print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ --- %s" % key1)
 
     list_sms = list(sms)
-    list_key = list(key)
+    list_key = list(key1)
 
 # ФУНКЦІЯ присвоєння індексів повідомленю та ключу відносно зміної sumbs
     def ind_ (iteral):
@@ -59,6 +59,7 @@ def shufr ():
     # print(secrsms)
 
 #   створення секретного(зашифрованого) повідомлення- це будуть самі букви
+    k = 0
     def secr_povid_(a,b):
         sec_povidomlenia = []
         for i in range(len(a)):  # ітерація по масиву кількості елем iter(це довжина повідомлення чи паролю)
