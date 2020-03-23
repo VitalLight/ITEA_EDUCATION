@@ -25,10 +25,3 @@ with open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file
     test2 = file2.read()
 
 find_(find_object, test2)
-
-
-
-
-
-
-

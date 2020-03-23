@@ -37,8 +37,6 @@ elif e_ == "1":
         text = f.readlines()  #  створює масив елементом якого є рядок
         f.write("\n"+n_key + " - " + n_parol)
 
-
-
 # для L8_ex_3
 def find_key ():
     key = input("ВВЕДДІТЬ СВІЙ КЛЮЧ доступу до паролю   ")
