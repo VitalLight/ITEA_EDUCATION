@@ -14,9 +14,10 @@ f = open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex
 text = f.read()
 f.close()
 i = 0
-while i < 1:
-    print("\nЩо зробити з файлом ?")
-    answ = input("ПОКАЗАТИ --- 1---, ЗАШИФРУВАТИ --- 2---, РОЗШИФРУВАТИ --- 3---,ІНШЕ - ВИХІД З ПРОГРАМИ    \n")
+while True: #i < 1:
+    print("\nЩО РОБИТИ З ФАЙЛОМ ?")
+    answ = input("\nПОКАЗАТИ --- 1---, \nЗАШИФРУВАТИ --- 2---, \nРОЗШИФРУВАТИ --- 3---,\nВИХІД З ПРОГРАМИ "
+                 "ЩОБ ОБРАТИ ІНШИЙ ФАЙЛ ДЛЯ РОБОТИ ---БУДЬ-ЯКИЙ ІНШИЙ СИМВОЛ   ")
     if answ == "1":
         print(text)
 
@@ -59,10 +60,18 @@ while i < 1:
             new_w_f = open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex_3\\'
                            + name_unsekr_file + '.txt', 'a+')
             new_text = new_w_f.write(unshufr_text)
+
+            #  ЗАПИТАТИ ЧИ ПОТРІБНО СТВОРИТИ НОВИЙ ПАРОЛЬ ДЛЯ ЦЬОГО ФАЙЛУ
+            print("\n СТВОРИТИ НОВИЙ ПАРОЛЬ ДЛЯ ЦЬОГО ФАЙЛУ?")
+            ans2 = input("\nТАК --- 1,\n НІ ---2     ")
+            if ans2 == "1":
+                print("\nПЕРЕЗАПУСТІТЬ ПРОГРАМУ ТА ВИБЕРІТЬ ПОЗИЦІЮ ---2---")
+            if ans2 == "2":
+                pass
             new_w_f.close()
         else:
             print("Вказаний вами КЛЮЧ до цього файлу відсутній у базі даних.\n Файл розшифрувати НЕМОЖЛИВО")
     else:
         exit()
-    i += 1
+
 f.close()
