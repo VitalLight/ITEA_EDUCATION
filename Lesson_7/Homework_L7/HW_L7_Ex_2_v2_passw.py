@@ -63,6 +63,7 @@ def shufr ():
 
 #   створення секретного(зашифрованого) повідомлення- це будуть самі букви
     def secr_povid_(a,b):
+        K = 0
         sec_povidomlenia = []
         for i in range(len(a)):  # ітерація по масиву кількості елем iter(це довжина повідомлення чи паролю)
             for j in range(len(b)):

@@ -2,31 +2,28 @@
 Реалізувати шифр Віженера.
 """
 
-
-def shufr():
+def shufr(text):
     #  символи для шифрування
-    sumbs = "'_ .,:;1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    sumbs = "_' .,:;-+1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     l_s = list(sumbs)
-    print(len(sumbs))
+    # print(len(sumbs))
 
-    sms = input("\nВведіть ПОВІДОМЛЕННЯ для генерації паролю:   ")
+    # sms = input("\nВведіть ПОВІДОМЛЕННЯ для генерації паролю:   ")
     key = input("Введіть КЛЮЧ:  ")
     l_key = list(key)
 
 #  автоматично коректує довжину ключа
-    if len(sms) >= len(key):
-        c_key = len(sms)//len(key)
-        ost_key = len(sms) % len(key)
+    if len(text) >= len(key):
+        c_key = len(text)//len(key)
+        ost_key = len(text) % len(key)
         key1 = key*c_key + key[:int(ost_key):]
 
-        # print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ  --- %s" % key1)
 
-    if len(sms) < len(key):
-        key1 = key[:len(sms):]
-        # print(" \nВаш СКОРЕКТОВАНИЙ КЛЮЧ --- %s" % key1)
+    if len(text) < len(key1):
+        key1 = key[:len(text):]
 
-    list_sms = list(sms)
+    list_sms = list(text)
     list_key = list(key1)
     # print(len(list_sms), len(list_key))
 
@@ -45,17 +42,13 @@ def shufr():
 
     sms_ind = ind_(list_sms)  # виводить  символи з list_sms в змінну- це числовий масив
     key_ind = ind_(list_key)  # виводить  символи з list_key в змінну - це числовий масив
-    print(len(sms_ind), len(key_ind))
-    print(sms_ind)
-    print(key_ind)
 
 
     # функція що створює масив з індексами для букв(символів) секретного повідомлення
     def secrchar_(sms_ind, key_ind):
         # print(len(sms_ind), len(key_ind), len(sms))
         sec_char = []
-        for i in range(len(sms)):
-
+        for i in range(len(text)):
             schar = sms_ind[i] + key_ind[i]
             # print(len(sms_ind), len(key_ind), len(sms))
             # print(schar)
@@ -63,7 +56,7 @@ def shufr():
         return sec_char
 
     secrsms = secrchar_(sms_ind, key_ind)  # масив з індексами для букв(символів) секретного повідомлення
-    # print(secrsms)
+
 
 #   створення секретного(зашифрованого) повідомлення- це будуть самі букви/символи
 
@@ -87,12 +80,10 @@ def shufr():
     secr_povid_(secrsms, l_s)
     sec_chr = secr_povid_(secrsms,l_s) #  масив букв зашифорованого повідомлення
     parol = ''.join(sec_chr)
-
-    print("\n ВАШ ПАРОЛЬ     %s  " % parol)
+    # print("\n ВАШ ПАРОЛЬ     %s  " % parol)
     return key, parol
 
 
-shufr()
 
 
 

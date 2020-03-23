@@ -20,11 +20,8 @@ def enter_way_file ():
     return ways, index
 mas_ways, mas_index = enter_way_file ()
 
-
-
 #  Запуск функц2ії введення шляхів до файлів порівняння
 enter_way_file()
-
 find_object = input("Вкажіть, що потрбіно спільного віднайти у вказаних файлах?   ")
 
 # функція рахує кількіть вказаних символів у файлі

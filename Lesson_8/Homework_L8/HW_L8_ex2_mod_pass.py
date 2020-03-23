@@ -29,10 +29,30 @@ if e_ != "1":
         print("\nВаш пароль = %s" % passw)
 
 elif e_ == "1":
-    from Lesson_8.Homework_L8.to_password_packedg.passw import shufr  #  сама запускається
+    from Lesson_8.Homework_L8.to_password_packedg.passw import shufr  #  сама запускається !???
     # shufr(key)
     n_key, n_parol = shufr()
     print("ВАШ ПАРОЛЬ ---  %s --- ТА КЛЮЧ  --- %s --- " %(n_parol, n_key))
     with open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\packeg_for_working with file\\passw_key.txt','a+') as f:
         text = f.readlines()  #  створює масив елементом якого є рядок
         f.write("\n"+n_key + " - " + n_parol)
+
+
+
+# для L8_ex_3
+def find_key ():
+    key = input("ВВЕДДІТЬ СВІЙ КЛЮЧ доступу до паролю   ")
+    l_key = len(key)
+    with open(r'd:\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex_3\\password_to_file.txt', 'r') as f:
+        text = f.readlines()  # створює масив елементом якого є рядок
+        passw = 0
+        for i in range(len(text)):
+            if key in text[i]:
+                g = text[i]
+                l_g = len(g)
+                passw = g[(l_key + 3):]  # зріз рядка вказано початкові координати
+                if key not in text[i]:
+                    print("\nКлюч не знайдено. Cтворіть свій пароль та ключ")
+                    exit()
+        print("\nВаш пароль = %s" % passw)
+    return key
