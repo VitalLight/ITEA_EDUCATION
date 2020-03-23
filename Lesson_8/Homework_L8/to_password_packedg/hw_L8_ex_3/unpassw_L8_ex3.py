@@ -6,10 +6,8 @@ def unshufr (text, key):
     sumbs = "_' .,:;-+1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     l_s = list(sumbs)
-    # print(len(sumbs))
 
     l_key = list(key)
-
         #  автоматично коректує довжину ключа
 
     if len(text) >= len(key):
@@ -29,7 +27,6 @@ def unshufr (text, key):
         for i in iteral:
             for j in l_s:
                 if i == j:
-                    # print(i, j)
                     a.append(l_s.index(j))
                     continue
                 else:
@@ -45,7 +42,6 @@ def unshufr (text, key):
         for i in range(len(text)):
             if (sms_ind[i] - key_ind[i]) <= 0:
                 unschar = sms_ind[i] - key_ind[i] + len(sumbs)
-
             elif 0 < (sms_ind[i] - key_ind[i]) <= len(l_s):
                 unschar = sms_ind[i] - key_ind[i]
             unsec_char.append(unschar)
@@ -66,7 +62,6 @@ def unshufr (text, key):
     unsecr_povid_(unsecrsms, l_s)
     unsec_chr = unsecr_povid_(unsecrsms,l_s) #  масив букв зашифорованого повідомлення
     unssms = ''.join(unsec_chr)
-    # print(type(unssms))
 
     return unssms, key
 

@@ -14,7 +14,7 @@ f = open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex
 text = f.read()
 f.close()
 i = 0
-while i<1:
+while i < 1:
     print("\nЩо зробити з файлом ?")
     answ = input("ПОКАЗАТИ --- 1---, ЗАШИФРУВАТИ --- 2---, РОЗШИФРУВАТИ --- 3---,ІНШЕ - ВИХІД З ПРОГРАМИ    \n")
     if answ == "1":
@@ -60,10 +60,8 @@ while i<1:
                            + name_unsekr_file + '.txt', 'a+')
             new_text = new_w_f.write(unshufr_text)
             new_w_f.close()
-
         else:
             print("Вказаний вами КЛЮЧ до цього файлу відсутній у базі даних.\n Файл розшифрувати НЕМОЖЛИВО")
-
     else:
         exit()
     i += 1

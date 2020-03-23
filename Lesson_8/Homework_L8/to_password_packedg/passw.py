@@ -1,8 +1,6 @@
 """"
 Реалізувати шифр Віженера.
 """
-
-
 def shufr():
     #  символи для шифрування
     sumbs = "'_ .,:;1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
@@ -49,7 +47,6 @@ def shufr():
     print(sms_ind)
     print(key_ind)
 
-
     # функція що створює масив з індексами для букв(символів) секретного повідомлення
     def secrchar_(sms_ind, key_ind):
         # print(len(sms_ind), len(key_ind), len(sms))
@@ -90,9 +87,4 @@ def shufr():
 
     print("\n ВАШ ПАРОЛЬ     %s  " % parol)
     return key, parol
-
-
 shufr()
-
-
-
