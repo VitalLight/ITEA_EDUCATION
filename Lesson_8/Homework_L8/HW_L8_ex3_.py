@@ -13,8 +13,8 @@ name_file = input("Вкажіть назву файлу, що знаходить
 f = open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex_3\\' + name_file + '.txt', 'r+')
 text = f.read()
 f.close()
-i = 0
-while True: #i < 1:
+
+while True:
     print("\nЩО РОБИТИ З ФАЙЛОМ ?")
     answ = input("\nПОКАЗАТИ --- 1---, \nЗАШИФРУВАТИ --- 2---, \nРОЗШИФРУВАТИ --- 3---,\nВИХІД З ПРОГРАМИ "
                  "ЩОБ ОБРАТИ ІНШИЙ ФАЙЛ ДЛЯ РОБОТИ ---БУДЬ-ЯКИЙ ІНШИЙ СИМВОЛ   ")
@@ -73,5 +73,3 @@ while True: #i < 1:
             print("Вказаний вами КЛЮЧ до цього файлу відсутній у базі даних.\n Файл розшифрувати НЕМОЖЛИВО")
     else:
         exit()
-
-f.close()
