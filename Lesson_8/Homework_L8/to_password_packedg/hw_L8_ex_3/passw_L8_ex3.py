@@ -6,8 +6,7 @@ def shufr(text):
     sumbs = "_' .,:;-+1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     l_s = list(sumbs)
-
-     key = input("Введіть КЛЮЧ:  ")
+    key = input("Введіть КЛЮЧ:  ")
     l_key = list(key)
 
 #  автоматично коректує довжину ключа
