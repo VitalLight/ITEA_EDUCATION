@@ -11,64 +11,69 @@
 import json
 print("КОНТАКТНИЙ ДОВІДНИК")
 
-class Notebok:
-    def __init__(self,  name, contact):
-        self.name = name
-        self.number = contact
-
-    def view_contact(self, name):
-        pass
-    def create_contact(self, name, contact):
-        pass
-
-    def add_new_contact(self, name, contact):
-        with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json','r') as f:
-            dict_contact = json.loads(f.read())
-            dict_contact.update({name: contact})
-
-            with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'w') as f:
-                json.dump(dict_contact, f)
-            # print(dict_contact)
-            return dict_contact
-
-class Person(Notebok):
-    def __init__(self, name):
-        super().__init__(name)
-
+class Person():
+    def __init__(self, f_name, l_name, mail, n_phone):
+        self.name = f_name
+        self.prizv = l_name
+        self.email = mail
+        self.phone = n_phone
 
 class Address:
-    def __init__(self, adr):
-        self.adress = adr
+    def __init__(self, streete, n_house, touwn):
+        self.streete = streete
+        self.house = n_house
+        self.misto = touwn
 
-class Contact(Notebok):
-    def __init__(self):
+
+class Contact(Person, Address):
+    def __init__(self, f_name, l_name, mail, n_phone, streete, n_house, touwn):
+        Person.__init__(self, f_name, l_name, mail, n_phone)
+        Address.__init__(self, streete, n_house, touwn)
+
+    def read_contact(self):
         with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'r') as f:
-            dict_contact = json.loads(f.read())
-            for i in dict_contact:
-                k = (f"{(i)} - {dict_contact.get(i)}")
-                print(str(k))
-        # pass
-    def dim_mas_cont(self):
+            masiv_contact = json.loads(f.read())  # з файлу записується рядок
+
+            contacts = list()
+            for i in range (len(masiv_contact)):
+                new_contact = new_cont
+                print(new_contact)
+                contacts.append(new_contact)
+
+class Notebok:
+    def __init__(self):
         pass
 
 
+    # def add_new_contact(self, new_cont):
+    #     with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'r') as f:
+    #         masiv_contact = json.loads(f.read())
+    #
+    #         dict_contact.update(new_cont)
+    #
+    #         with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'w') as f:
+    #             json.dump(dict_contact, f)
+    #         # print(dict_contact)
+    #         return dict_contact
 
-        # super().__init__(name, contact)
-        # return
-        # mas_cont = []
+
+
 
 #  додає нові контакти
 # dict_contact  = {}
-# while True:
-    # name = input("enter name     ")
-    # contact = input("enter number     ")
-    # n_cont = Notebok(name, contact)
-    # # print(n_cont.number)
-    # n_cont.add_new_contact(name, contact)
-    # break
+while True:
+    f_name = input("enter first name     ")
+    l_name = input("enter last name     ")
+    mail = input("enter number mail    ")
+    n_phone = input ("enter number phone    ")
+    streete = input("enter street           ")
+    n_house = input("enter number house    ")
+    touwn = input("enter touwn    ")
+    break
 
 #  dinamic object
-cont = Contact()
-# c = cont.dim_mas_cont()
+new_cont = Contact(f_name, l_name, mail, n_phone, streete, n_house, touwn)
+new_cont.read_contact()
 
-# print(f'має бути перелік контактів {cont.dim_mas_cont()}')
+
+# new_cont.add_new_contact(new_cont)
