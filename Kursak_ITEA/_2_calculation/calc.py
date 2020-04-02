@@ -39,14 +39,14 @@ def fruit_inform():
         print(f'\n {fruit[i]},  {fruit_characteristic[i]}')
         while True:
             try:
-                sufar = float(input("\n\t\t\tВВЕДІТЬ ВМІСТ ЦУКРУ У СОЦІ, %  \t\t\t\t\t\t").replace(',','.'))
+                sugar = float(input("\n\t\t\tВВЕДІТЬ ВМІСТ ЦУКРУ У СОЦІ, %  \t\t\t\t\t\t").replace(',','.'))
                 acid2 = float(input("\t\t\t\tВВЕДІТЬ КІЛЬКІСТЬ ТИТРОВАНИХ КИСЛОТ У СОЦІ, %\t\t\t").replace(',','.'))
                 v_juice = float(input("\t\t\t\t\tВВЕДІЬ ОТРИМАНИЙ ОБЄМ СОКУ, л\t\t\t\t").replace(',','.'))
                 break
             except ValueError:
                 print("\nВСІ ПОЛЯ ПОВИННІ МАТИ ЧИСЛОВІ ЗНАЧЕННЯ. ПОВТОРІТЬ ВСЕ СПОЧАТКУ ")
         sum_acid = round(sum_acid + (acid2*v_juice), 2)
-        sum_sugar = round(sum_sugar + (sufar * v_juice), 2)
+        sum_sugar = round(sum_sugar + (sugar * v_juice), 2)
         sum_v_juice = round((sum_v_juice + v_juice), 2)
         arr_fruit.append(fruit[i])
     k_acid = round((sum_acid/sum_v_juice), 2)
@@ -84,10 +84,10 @@ def corr_acid(k_acid, acid_wine, sum_v_juice):
     return v_water_juice
 
 
-  #  рахується кількість цукру що потрібно добавити до сусла аби отримати заявлену міцність
+  #  рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
 def sugar(micnist, shugar, v_water_juice,sum_v_juice,k_acid, acid_wine,):
     mas_sug = (micnist - (shugar/2))*2*10*v_water_juice
-    v_sug = (mas_sug*0.6)/1000
+    v_sug = (mas_sug*0.62)/1000
     mas_v_sug = v_sug *(micnist - (shugar/2))*2*10
     all_mas_sug = round((mas_sug + mas_v_sug),2)
     if k_acid >= acid_wine:
@@ -116,6 +116,6 @@ def all_func_calc_wine():
     v_water_juice = corr_acid(k_acid, acid_wine, sum_v_juice)
     all_mas_sug, v_wine_end = sugar(micnist, k_sugar, v_water_juice, sum_v_juice, k_acid, acid_wine,)
     plus_acid = add_acid(k_acid, acid_wine, v_wine_end)
-    # return all_func_calc_wine
+
 
 # all_func_calc_wine()

@@ -36,8 +36,8 @@ def dani_micnocti_():
     return micnist, sugar, acid
 
 def add_alc (a,b,c,d):
-    v_clear_alc = round((d*((a-b)/(c-b))),2)
-    v_osn_wine = round((d-v_clear_alc),2)
+    v_clear_alc = round((d*((a-b)/(c-b))), 2)
+    v_osn_wine = round((d-v_clear_alc), 2)
     return v_clear_alc, v_osn_wine
 
 
@@ -49,3 +49,25 @@ def clear_pokaznuk(sugar, acid, v_osn_wine,v_kripl_wine):
 
     return koncentrac_sugar_kripl_w, koncentrac_acid_kripl_w
 
+
+#  розрахунок етилового спирту
+def spurt_in_wine(a, b, c, d,e):
+    spurt = round(((a * b - c * d)/e), 2)
+    return spurt
+
+#   розхід бурякового цукру
+def sugar_in_wine(a, b, c, d):
+    sugar_wine = round((((a * b - c * d) / 10.5)/10), 2)
+    v_sugar_wine = round((sugar_wine * 0.62), 2)
+    return v_sugar_wine, sugar_wine
+
+#   розхід води
+def add_water(a, b, c, d, e, w):
+    while True:
+        if b <= d:
+            water = round((a - c - e - w), 2)
+            break
+        elif b > d:
+            water = 0
+            break
+    return water
