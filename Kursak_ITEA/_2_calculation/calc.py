@@ -98,14 +98,13 @@ def corr_acid(k_acid, acid_wine, sum_v_juice):
 
   #  рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
 def sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist, k_acid, acid_wine, v_water_juice):
-    sugar_to_micnosti = (micnist * 2) - (k_sugar) + (sum_v_juice * k_micnist / 0.589)
-    mas_sug = round(((sugar_to_micnosti + (shugar_w * 2)) * 10 * v_water_juice), 2)
+    sugar_to_micnosti = ((micnist) - (k_sugar/2) - k_micnist) * 20
+    mas_sug = round(((sugar_to_micnosti + shugar_w * 10) * v_water_juice), 2)
     v_sug = (mas_sug * 0.62) / 1000
     if k_acid >= acid_wine:
         v_wine_end = round((v_water_juice + v_sug), 2)
     else:
         v_wine_end = sum_v_juice
-
     return mas_sug, v_wine_end
 
 
@@ -124,11 +123,10 @@ def all_func_calc_wine():
     k_acid, k_sugar, sum_v_juice, k_micnist_j = fruit_inform()
     acid_wine, micnist, shugar_w = main_exec_()
     v_water_juice, v_all_water = corr_acid(k_acid, acid_wine, sum_v_juice)
-    # all_mas_sug, v_wine_end = sugar(micnist, k_sugar, v_water_juice, sum_v_juice, k_acid, acid_wine,)
     mas_sug, v_wine_end = sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist_j, k_acid, acid_wine, v_water_juice)
     plus_acid = add_acid(k_acid, acid_wine, v_wine_end)
     print(f"ЩОБ ОТРИМАТИ ВИНО МІЦНОСТЮ {micnist}% ТА {acid_wine}% КИСЛОТНІСТЮ ПОТРІБНО ДОДАТКОВО ВИКОРИСТАТИ:\n"
           f" {mas_sug} грам ЦУКРУ ТА ДОБАВИТИ {v_all_water} літрів ВОДИ \n"
           f"ОБЄМ ГОТОВОГО ВИНА СТАНОВИТИМЕ ПРИБЛИЗНО {v_wine_end} літрів")
 
-# all_func_calc_wine()
+all_func_calc_wine()
