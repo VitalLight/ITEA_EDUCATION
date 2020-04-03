@@ -36,9 +36,6 @@ def condition_kupag():
           f" \t{spurt}літрів {procent_spurty}% РОЗЧИНУ СПИРТУ \n"
           f" \t\t{sugar_wine}кг ЦУКРУ,\n"
           f" \t\t\t{ water}літрів ВОДИ\n")
-
-
-
-condition_kupag()
+# condition_kupag()
 
 

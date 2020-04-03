@@ -22,4 +22,4 @@ def main_less_acid_juice():
             f" ДОДАТИ {kil_juice}л СОКУ ІЗ меншою КИСЛОТНІСТЮ")
 
 
-main_less_acid_juice()
+# main_less_acid_juice()

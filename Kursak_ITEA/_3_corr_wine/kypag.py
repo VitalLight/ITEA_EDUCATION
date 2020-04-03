@@ -56,4 +56,4 @@ def main_kypag():
         f"\t\t\tЗАГАЛЬНИЙ ОБЄМ --- {sum_v_juice} літрів\n")
 
 
-main_kypag()
+# main_kypag()

@@ -3,6 +3,7 @@ from Kursak_ITEA._3_corr_wine.kypag import main_kypag
 from Kursak_ITEA._3_corr_wine.kripl_wine import main_kripl
 from Kursak_ITEA._3_corr_wine.acid_less_juice import main_less_acid_juice
 
+
 def repear_wine():
     print("\nОБЕРІТЬ ТЕ ЩО ВАМ ПОТРІБНО:")
     menu = {'\t\t\t1':'КУПАЖ ВИН АБО СОКІВ',
@@ -28,8 +29,7 @@ def repear_wine():
             main_less_acid_juice()
             break
         elif answer == '5':
-            pass
-            break
+            return
         elif answer == '0':
             print("ВИХІД З ПРОГРАМИ")
             exit()
