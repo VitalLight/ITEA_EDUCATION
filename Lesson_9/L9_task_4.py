@@ -4,7 +4,7 @@ text = f.read()
 arr = text.split()
 d = {}
 for i in arr:
-   s = len((re.findall(i,text)))
+   s = len((re.findall(i, text)))
    d.update({i: s})
 f.close()
 print(d)
