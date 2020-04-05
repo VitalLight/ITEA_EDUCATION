@@ -10,6 +10,7 @@ s = sentense.split(" ")
 sentense_join = "".join(s)
 long_coolums = int(input("ВВЕДІТЬ ВКАІЖІТЬ ДОВЖИНУ СТОВПА\t\t\t"))
 long_1_zig = long_coolums + long_coolums - 2
+#  додаткові пробіли  в кінець введеного виразу
 a = ((len(sentense_join)//long_1_zig) + 1) * long_1_zig - len(sentense_join)
 cor_sentens_join = sentense_join + a * " "
 
@@ -26,7 +27,6 @@ for i in range(long_coolums):
             a.extend(sum)
         print(a)
     if 0 < i <= long_coolums - 2:
-        a = []
         for j in range(i, len(list_sent), long_1_zig):
             element1 = list_sent[j]
             space1 = (long_1_zig - long_coolums - i) * " "
@@ -37,12 +37,9 @@ for i in range(long_coolums):
             a.extend(sum)
         print(a)
     if i == long_coolums - 1:
-        a = []
         for j in range(i, len(list_sent), long_1_zig):
             e = list_sent[j]
-            # print(e)
             space = (long_1_zig - long_coolums) * " "
-            # print(space)
             sum = e + space
             a.extend(sum)
         print(a)
