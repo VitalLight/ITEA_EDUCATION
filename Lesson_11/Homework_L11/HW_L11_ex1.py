@@ -11,12 +11,14 @@
 import json
 print("КОНТАКТНИЙ ДОВІДНИК")
 
-class Person():
+
+class Person:
     def __init__(self, f_name, l_name, mail, n_phone):
         self.name = f_name
         self.prizv = l_name
         self.email = mail
         self.phone = n_phone
+
 
 class Address:
     def __init__(self, streete, n_house, touwn):
@@ -30,69 +32,100 @@ class Contact(Person, Address):
         Person.__init__(self, f_name, l_name, mail, n_phone)
         Address.__init__(self, streete, n_house, touwn)
 
+
+    def __str__(self):
+        return f"Імя контакту {self.name}, Мобільний номер контакту: {self.phone}"
+
+
+class Notebok:
+    def __init__(self):
+        # В даній змінній ми будемо зберігати список об'єктів(не словників) контактів(імя, номер і тд)
+        self.list_of_contacts = list()
+    
+    def add_new_contact(self):
+        """
+        Тут ми будемо створювати нові контакти. 
+        1. Попросимо в користувача дані
+        2. Створимо об'єкт Contact
+        3. Додамо його до списку наших контактів
+        4. Запишемо це у файл
+        """
+        f_name = input("enter first name     ")
+        l_name = input("enter last name     ")
+        mail = input("enter number mail    ")
+        n_phone = input("enter number phone    ")
+        streete = input("enter street           ")
+        n_house = input("enter number house    ")
+        touwn = input("enter touwn    ")
+
+        # Створюємо новий об'єкт
+        cont = Contact(f_name, l_name, mail, n_phone, streete, n_house, touwn)
+        # додамо його до списку існуючих контактів
+        self.list_of_contacts.append(cont) # повертаєтсья сюди після read_contact
+        # print(self.list_of_contacts)
+        # запишемо контакти у файл (за допомогою self ми викликаємо іншу функцію в цьому класі, це як допоміжне слово щоб нас зрозуміли що ми хочемо)
+        self.write_contacts_to_file()
+
     def read_contact(self):
-        with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'r') as f:
+        """
+        В Даному методі ми відкриємо наш json файл, і зчитаємо звідти всі контакти, які вже були створені раніше
+        На кожній ітерації, ми будемо створювати новий об'єкт Contact для кожного контакту
+        і створимо масив таких об'єктів
+        """
+        with open(r'test.json', 'r') as f: # ???? якщо прописуємо шлях до файлу коротко, то то він буде знаходитись у папці де основний файл?
             masiv_contact = json.loads(f.read())  # з файлу записується рядок
             print(masiv_contact)
-            contacts = list()
-            for i in range(len(masiv_contact)):
-                contact = cont
-                #  обєкту контакт не бачить
-                contacts.append(contact)
-        print(contacts)
-        return contacts
+        # masiv_contact - це буде список словників{} контактів
+        for contact_dict in masiv_contact: # ??? як розуміти. Назва слоника одна, а словників до цієї назви декілька
+            # Отримуємо всі дані зі словника назва словника  ----  ???contact_dict(чи це назва елемента в списку словників) назву ми ніде не обявляли!!!!
+            name = contact_dict["name"]
+            prizv = contact_dict["prizv"]
+            email = contact_dict["email"]
+            phone = contact_dict["phone"]
+            house = contact_dict["house"]
+            misto = contact_dict["misto"]
+            streete = contact_dict["streete"]
+            # Створюємо новий об'єкт Contact
+            new_contact = Contact(name, prizv, email, phone, house, misto, streete) # ??? для чого його тут створювати? а змінну masiv_contact одразу не можна роздрукувати?
+            print(new_contact)
+            # Додаємо його до списку контактів до об'єкта Notebok
+            self.list_of_contacts.append(new_contact)
 
-    #  це щось теж не працює? не розумію принцип як сюди передати дані, щоб П мене розумів, які дані я хочу побачити.
-    #  та як при потребі ці дані перетворити в інший формат
-    def __str__(self):
-        return self.read_contact()  #
+    def write_contacts_to_file(self):
+        mas_dict = list()
+        """
+        В даному методі ми будемо записувати список контактів у json файл
+        Як ми будемо записувати дані у файл: У нас є список об'єктів Contact.
+        Вони зберігаються у змінній self.list_of_contacts
+        У файл нам треба записати масив словників
+        Значить треба запустити ітерацію по нашому списку контактів
+        далі створити словник із об'єкту Contact (???той що є в зміній self.list_of_contacts?)
+        Додати цей словник до масиву, який ми будемо записувати у файл
+        і далі записати цей масив у файл
+        """
+        for contact in self.list_of_contacts: #  він з методу add_new_contact цього класу
+            # Ось так ми створюємо словник, який потім будемо додавати до масиву і записувати далі у файл
+            dict_contact = {  # ??? як цей словник розуміє, що змінні це є ключі? Що означає contact.хххххх (як його читати)?
+                "name": contact.name,
+                "email": contact.email,
+                "prizv": contact.prizv,
+                "phone": contact.phone,
+                "misto": contact.misto,
+                "house": contact.house,
+                "streete": contact.streete 
+            }
+            mas_dict.append(dict_contact)
 
-class Notebok (Contact):
-    mas_dict = list()
-    def __init__(self):
-        pass
+        with open(r'test.json', 'w') as f:
+            json.dump(mas_dict, f)
 
-    def add_new_contact(self, new_cont):
-        with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'r') as f:
-            dict_contact = json.loads(f.read())
+notebook = Notebok()
+notebook.read_contact()
+notebook.add_new_contact()
+print(notebook.list_of_contacts[]) #  ??? як це читаєтсья ? мене збиває self в .list_of_contacts.
+                                        # не розумію як два обєкти notebook та list_of_contacts між собою поєднуються.
 
-            #  по new_cont виникає помилка, що не хоче ітеруватися. Я не розумію для чого воно йому треба.
-            #  чому він не може просто взяти переданий обєкт?
-            #  при такому записі має ствритися словник.
-            dict_contact.update(new_cont)
+""""
+??? чому після створення обєкту Contact програма звертаєтсья до def __str__(self), про це ніде не вказано!
 
-            #  а так я хочу цей словник запистаи в масив, і в мене це не виходить! що мені потрібно почитати?
-            #  щоб зрозуміти свої помилки
-            dict_in_mas = dict_in_mas.append(dict_contact)
-
-            #  і мені воно не записує
-            with open(r'D:\\Python_ITed\\Lesson_11\\Homework_L11\\dict_contact.json', 'w') as f:
-                json.dump(dict_in_mas, f)
-
-            print(dict_in_mas)
-            return dict_in_mas
-
-
-#  додає нові контакти
-# dict_contact = {}
-while True:
-    f_name = input("enter first name     ")
-    l_name = input("enter last name     ")
-    mail = input("enter number mail    ")
-    n_phone = input ("enter number phone    ")
-    streete = input("enter street           ")
-    n_house = input("enter number house    ")
-    touwn = input("enter touwn    ")
-    break
-
-#  dinamic object
-#  створення обєкту cont класу Contact та звернення до його методу read_contact
-cont = Contact(f_name, l_name, mail, n_phone, streete, n_house, touwn)
-
-cont.read_contact()
-#  підозрюю що десь тут я не правильно розумію запис та передачу даних
-new_cont = Notebok()
-new_cont.add_new_contact(new_cont)
-
-
-
+"""
