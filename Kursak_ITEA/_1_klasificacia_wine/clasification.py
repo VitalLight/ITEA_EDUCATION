@@ -4,10 +4,11 @@ from Kursak_ITEA.help_func import create_list, choice_for_reed
 def main_wine_f():
     print("\nОБЕРІТЬ ЩО ВАС ЦІКАВИТЬ:")
     while True:
-        kind_wine = {'1':'КЛАСИФІКАЦІЯ ВИН',
-                     '2':'ХАРАКТЕРИСТИКИ ФРУКТОВИХ СОКІВ',
+        kind_wine = {'1': 'КЛАСИФІКАЦІЯ ВИН',
+                     '2': 'ХАРАКТЕРИСТИКИ ФРУКТОВИХ СОКІВ',
                      '3': 'ВИХІД В ПОПЕРЕДНЄ МЕНЮ',
-                     '0':'ВИХІД З ПРОГРАМИ'}
+                     '0': 'ВИХІД З ПРОГРАМИ'
+                     }
         create_list(kind_wine)
         ans = input("\tВАШ ВИБІР ......    ")
         print("\n")

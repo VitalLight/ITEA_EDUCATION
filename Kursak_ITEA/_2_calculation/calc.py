@@ -1,40 +1,37 @@
 import string
+import json
 from Kursak_ITEA.help_func import create_list, zagalni_dani
 
 def fruit_inform():
-    fruit = {1:'ЯБЛУКО', 2:'ГРУША', 3:'СЛИВА', 4: 'ВИШНЯ',
-             5: 'АГРУС', 6: 'СМОРОДИНА', 7:'МАЛИНА КУЛЬТУРНА', 8: 'СУНИЦЯ'
-    }
-    print("\n")
-    create_list(fruit)
-    fruit_characteristic = {
-                1: '\t\t\t вміст цукру в соці (7-20)%, кислотність (0,4-2,5)%, вихід соку зі свіжих плодів (50-65)%',
-                2: '\t\t\t вміст цукру в соці (5-16)%, кислотність (0-1,3)%, вихід соку зі свіжих плодів 60%',
-                3: '\t\t\t вміст цукру в соці (5-16)%, кислотність (0,25-2)%, вихід соку зі свіжих плодів 45%',
-                4: '\t\t\t вміст цукру в соці (6-15)%, кислотність (0-2,4)%, вихід соку зі свіжих плодів 70%',
-                5: '\t\t\t вміст цукру в соці 8,2%, кислотність 1,4%, вихід соку зі свіжих плодів 60%',
-                6: '\t\t\t вміст цукру в соці (5-15)%, кислотність (1,0-3)%, вихід соку зі свіжих плодів 50%',
-                7: '\t\t\t вміст цукру в соці (5-14)%, кислотність (0,5-1,5)%, вихід соку зі свіжих плодів (55-65)%',
-                8: '\t\t\t вміст цукру в соці (3-13)%, кислотність (0,5-1,0)%, вихід соку зі свіжих плодів 65%'
-    }
+
+    #  показати список фруктів
+    with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+        fruit_characteristic = json.loads(f.read())
+        for key in fruit_characteristic.keys():
+            slice_fruit = ((fruit_characteristic.get(key)).split("/"))[slice(1)]
+            #  роздруковуються фрукти
+            print(key + " - " + str(slice_fruit))
+
     while True:
         try:
-            kil = input("ВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/   ")
+            k = ""
+            kil = input("\nВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/   ")
             kil_fruktiv = kil.split("/")
+            for i in kil_fruktiv:
+                if i in fruit_characteristic.keys():
+                    pass
+                else:
+                    k = k + i + ', '
             break
-        except ValueError:
+        except AttributeError:
             print("ВВЕДІТЬ ДАНІ У ВКАЗАНОМУ ФОРМАТІ")
+            return k
 
-    # цикл перевіряє чи правильно введені числові значення та перетворює їх у формат int
-    try:
-        b = []
-        for i in range(len(kil_fruktiv)):
-            if kil_fruktiv[i] != "" and int(kil_fruktiv[i]) <= int(len(fruit)):
-                b.append(int(kil_fruktiv[i]))
-    except ValueError:
-        print("ВИ НЕ ОБРАЛИ ЖОДНОГО ФРУКТУ АБО ОБРАЛИ ФРУКТИ ВІДСУТНІ У НАДАНОМУ СПИСКУ. РОБОТУ ПРОГРАМИ ЗАКІНЧЕНО.")
+    #  вихід з програми якщо введені ЧИСЛА номерів фруктів відрізняються від вказаного формату
+    if k != "":
+        print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
+              f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
         exit()
-
 
     arr_fruit = []
     # створюється масив даних з введених фруктів
@@ -43,9 +40,9 @@ def fruit_inform():
     sum_sugar = 0
     sum_v_juice = 0
     sum_micnist_j = 0
-    for i in b:
-        print(f"\nВВЕДІТЬ ВХІДНІ ДАНІ В СОЦІ АБО ЗБРОЖЕНО-СПИРТОВОМУ СОЦІ --- {fruit[i]}")
-        print(f'\n {fruit[i]},  {fruit_characteristic[i]}')
+    for key in kil_fruktiv:
+        print(f"\nВВЕДІТЬ ВХІДНІ ДАНІ В СОЦІ / ЗБРОЖЕНО-СПИРТОВОМУ СОЦІ --- " + str((fruit_characteristic.get(key)).split("/")[slice(1)]))
+        print(f'ХАРАКТЕРИСТИКА СОКУ  -----  {((fruit_characteristic.get(key)).split("/"))[slice(1, 2)]}')
         while True:
             try:
                 sugar, acid2, micnist_j, v_juice = zagalni_dani()
@@ -56,11 +53,11 @@ def fruit_inform():
         sum_sugar = round(sum_sugar + (sugar * v_juice), 2)
         sum_v_juice = round((sum_v_juice + v_juice), 2)
         sum_micnist_j = round(sum_micnist_j + (micnist_j * v_juice), 2)
-        arr_fruit.append(fruit[i])
+        arr_fruit.append(str((fruit_characteristic.get(key)).split("/")[slice(1)]))
     k_acid = round((sum_acid/sum_v_juice), 2)
     k_sugar = round((sum_sugar/sum_v_juice), 2)
     k_micnist_j = round((sum_micnist_j/ sum_v_juice), 2)
-    print(f"\n ВИНО БУДЕ З НАСТУПНИХ ФРУКТІВ {arr_fruit}")
+    print(f"\n ВИНО БУДЕ З НАСТУПНИХ ФРУКТІВ {''.join(arr_fruit)}")
     print(f"\n СУМІШ СОКІВ ЦИХ ФРУКТІВ МАЄ У СВОЄМУ СКЛАДІ \n"
           f"\t -ТИТРОВАНИХ КИСЛОТ - {k_acid}% \n"
           f"\t - ЦУКРУ - {k_sugar}% \n"
