@@ -23,11 +23,9 @@ def main_kripl():
 
     v_clear_alc, v_osn_wine = add_alc(micnist_kripl_wine, micnist, alc_for_kripl, v_kripl_wine)
 
-    #  функція знаходить вміст цукрів та кислот у кріпленому вині
+    # Функція знаходить вміст цукрів та кислот у кріпленому вині
     koncentrac_sugar_kripl_w, koncentrac_acid_kripl_w = clear_pokaznuk(sugar, acid, v_osn_wine, v_kripl_wine)
     print(f"\nДЛЯ ПРИГОТУВАННЯ {v_kripl_wine} л КРІПЛЕНОГО ВИНА ПОТРІБНО ВИКОРИСТАТИ:\n"
           f" {v_clear_alc} л  {alc_for_kripl}% СПИРТОВОГО РОЗЧИНУ,\n"
            f" {v_osn_wine} л БАЗОВОГО ПРОДУКТУ {product}. \n"
            f"ВМІСТ ЦУКРУ У КРІПЛЕНОМУ ВИНІ БУДЕ СТАНОВИТИ  {koncentrac_sugar_kripl_w}%, А КИСЛОТ {koncentrac_acid_kripl_w}%")
-
-# main_kripl()

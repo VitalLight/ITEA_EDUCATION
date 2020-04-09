@@ -10,25 +10,26 @@ class Fruite_add:
         self.outjuice = input("ВКАЖІТЬ ВИХІД СОКУ ІЗ СВІЖИХ ФРУКТІВ, %\t\t\t")
 
     def add_to_file(self):
-        #  відкриваєм json файл для читанння
+
+        # Відкриваєм json файл для читанння
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
             json_dict_text = json.loads(f.read())
         key = str(len(json_dict_text) + 1)
         new_frukt = {key: f"{(self.name).upper()}\t/ вміст цукру в соці {self.sugar}, кислотність {self.acid}, "
-                          f" вихід соку зі свіжих плодів {self.outjuice}%"
-                     }
-         # запис в json файл для запису
+                          f" вихід соку зі свіжих плодів {self.outjuice}%"}
+
+         # Запис в json файл для запису
         json_dict_text.update(new_frukt)
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'w') as f:
             json.dump(json_dict_text, f)
-        print(json_dict_text)
+        print(create_list(json_dict_text))
 
-        # відкриваємо txt файл для читання
+        # Відкриваємо txt файл для читання
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'r') as f:
             txt_text = f.read()
         new_txt_text = f"{(self.name).capitalize()}\t\t\t/\t\t{self.sugar}\t\t/\t\t{self.acid}\t\t/\t\t{self.outjuice}\t\t/\n" \
                        f"-----------------------------------------------------------------------------/\n"
-        # відкриваємо txt файл для запису
+        # Відкриваємо txt файл для запису
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'a+') as f:
             f.write(new_txt_text)
 
@@ -39,29 +40,35 @@ class Del_Fruits(Fruite_add):
         self.key = input("ВВЕДІТЬ КЛЮЧ ФРУКТУ\t\t\t")
 
     def del_from_file(self):
-        #  видалення зі словника елементу та присвоєння значення цього словника  змінній name_fruit
-        name_fruit = json_dict_text.get(self.key).split("/")[0].capitalize()
+        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+            json_dict_text = json.loads(f.read())
+            if self.key not in json_dict_text.keys():
+                print("ВИХІД У ПОТОЧНЕ МЕНЮ, ОСКІЛЬКИ НЕ ВКАЗАНО ЖОДНОГО НАЯВНОГО КЛЮЧА")
+                return
 
-         #  json_dict_text.pop(self.key)
+        # Видалення зі словника елементу та присвоєння значення цього словника  змінній name_fruit
+        name_fruit = json_dict_text.get(self.key).split("/")[0].capitalize()
         del json_dict_text[self.key]
         new_dict = {}
-        #  цикл для переприсвоєння номерів ключів у послідовність
+
+        # Цикл для переприсвоєння номерів ключів у послідовність
         i = 1
         for j in list(json_dict_text):
             new_dict[str(i)] = json_dict_text.pop(j)
             i += 1
             new_dict.update(new_dict)
 
-        #  запис в json файл
+        #  Запис в json файл
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'w') as f:
             json.dump(new_dict, f)
         print(create_list(new_dict))
 
-        # відкрити на прочитання тхт файл . знайти в ньому ключове слово  фрукта
+        # Відкрити на прочитання тхт файл . знайти в ньому ключове слово  фрукта
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'r') as f:
             del_txt_text = f.readlines()
+
+            # Пошук по елементах масиву пошукового слова
             k = 0
-            #  пошук по елементах масиву пошукового слова
             for el_mas in del_txt_text:
                 if name_fruit in str(el_mas):
                     row = k
@@ -72,14 +79,13 @@ class Del_Fruits(Fruite_add):
             f.writelines(del_txt_text)
 
 
-#  початок основої програми
+# Початок основої програми
 def start_edit():
     while True:
-        print("\n МЕНЮ")
+        print("\n МЕНЮ --- ДОДАВАННЯ/ ВИДАЛЕННЯ ФРУКТІВ ТА ХАРАКТРИСТИК ЇХ СОКІВ ---")
         dict_action = {"1": "ДОДАТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
                        "2": "ВИДАЛИТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
-                       "0": "ВИХІД"
-                      }
+                       "0": "ВИХІД"}
         print(create_list(dict_action))
         answer = input("\nОБЕРІТЬ, ЩО ПОТРІБНО ЗРОБИТИ З МЕНЮ ВИЩЕ\t")
         if answer == '1':
@@ -94,7 +100,7 @@ def start_edit():
             fruit_remove = Del_Fruits(key="")
             fruit_remove.del_from_file()
         elif answer == '0':
+            print("ВИХІД З ПРОГРАМИ")
             exit()
         else:
             print("ЗРОБІТЬ СВІЙ ВИБІР")
-

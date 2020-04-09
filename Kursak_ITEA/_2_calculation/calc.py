@@ -1,6 +1,8 @@
 import string
 import json
+
 from Kursak_ITEA.help_func import create_list, zagalni_dani
+
 
 def fruit_inform():
 
@@ -9,7 +11,6 @@ def fruit_inform():
         fruit_characteristic = json.loads(f.read())
         for key in fruit_characteristic.keys():
             slice_fruit = ((fruit_characteristic.get(key)).split("/"))[slice(1)]
-
             #  роздруковуються фрукти
             print(key + " - " + str(slice_fruit))
 
@@ -21,35 +22,17 @@ def fruit_inform():
             for i in kil_fruktiv:
                 if i not in fruit_characteristic.keys():
                     k = k + i + ', '
-                    # return k
             if k != "":
                 print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
                       f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
                 continue
             else:
                 break
-
-            #         # pass
-            #         break
-            #     else:
-            #         k = k + i + ', '
-            # # break
-            # continue
         except AttributeError:
             print("ВВЕДІТЬ ДАНІ У ВКАЗАНОМУ ФОРМАТІ")
         return k
 
-    #  вихід з програми якщо введені ЧИСЛА номерів фруктів відрізняються від вказаного формату
-    # if k != "":
-    #     print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
-    #           f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
-    #     return
-    # elif k == "":
-    #     pass
-    #     # exit()
-
     arr_fruit = []
-    # створюється масив даних з введених фруктів
     # ВВОДЯТЬСЯ ДАНІ ЩОДО ЦУКРИСТОСТІ, КИСЛОТНОСТІ ТА ОБЄМУ СОКУ КОЖНОГО ФРУКТУ
     sum_acid = 0
     sum_sugar = 0
@@ -108,7 +91,7 @@ def corr_acid(k_acid, acid_wine, sum_v_juice):
             acid_wine = float(input("КИСЛОТНІСТЬ ВИНА МАЄ БУТИ БІЛЬШЕ НУЛЯ. СКОРЕКТУЙТЕ ЗНАЧЕННЯ, %\t\t\t").replace(',', '.'))
             continue
 
-  #  рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
+#  рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
 def sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist, k_acid, acid_wine, v_water_juice):
     sugar_to_micnosti = ((micnist) - (k_sugar/2) - k_micnist) * 20
     mas_sug = round(((sugar_to_micnosti + shugar_w * 10) * v_water_juice), 2)
@@ -141,4 +124,4 @@ def all_func_calc_wine():
           f" {mas_sug} грам ЦУКРУ ТА ДОБАВИТИ {v_all_water} літрів ВОДИ \n"
           f"ОБЄМ ГОТОВОГО ВИНА СТАНОВИТИМЕ ПРИБЛИЗНО {v_wine_end} літрів")
 
-# all_func_calc_wine()
+

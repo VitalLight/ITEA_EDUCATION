@@ -1,7 +1,7 @@
 from Kursak_ITEA.help_func import sum_pokaznuk_na_obiem, midl_value, zagalni_dani
 
 
-def  repag_wine_and_juice():
+def repag_wine_and_juice():
     print(" \nВИ МОЖЕТЕ ВВЕСТИ ДО 10 ОДИНИЦЬ ВИН")
     sum_dobutky_sugar_v_juice = 0
     sum_dobutky_acid_v_juice = 0
@@ -14,15 +14,14 @@ def  repag_wine_and_juice():
             product = input("\nВВЕДІТЬ НАЗВУ ОСНОВНОГО ПРОДУКТУ\t\t\t")
             sugar, acid, micnist, v_juice = zagalni_dani()
 
-            #  добутки показника на обєм
+            # Добутки показника на обєм
             sum_dobutky_sugar_v_juice = sum_pokaznuk_na_obiem(sugar, v_juice,  sum_dobutky_sugar_v_juice )
             sum_dobutky_acid_v_juice = sum_pokaznuk_na_obiem(acid, v_juice, sum_dobutky_acid_v_juice)
             sum_dobutky_micnist_v_juice = sum_pokaznuk_na_obiem(micnist, v_juice, sum_dobutky_micnist_v_juice)
             sum_v_juice = v_juice + sum_v_juice
 
-            #  масив із назвами продуктів
+            # Масив із назвами продуктів
             prod.append(product)
-
             kil = kil + 1
             print(f"ЗАЛИШИЛОСЬ  {10 - kil}  ВНЕСЕНЬ ДО АВТОМАТИЧНОГО ВИХОДУ\n")
             answer = input("ПРОДОВЖИТИ ВНЕСЕННЯ ОДИНИЦЬ ПРОДУКЦІЇ ?   + / -   ")
@@ -35,7 +34,7 @@ def  repag_wine_and_juice():
     return sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice,sum_dobutky_micnist_v_juice, sum_v_juice, prod
 
 
-#  значення після купажу
+# Значення після купажу
 def after_kypag(a,b,c,d):
     sugar_midl = midl_value(a,d)
     acid_midl = midl_value(b,d)
@@ -46,14 +45,11 @@ def after_kypag(a,b,c,d):
 def main_kypag():
     sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice, sum_dobutky_micnist_v_juice, sum_v_juice, prod \
         = repag_wine_and_juice()
-    sugar_midl, acid_midl, micnist_midl\
-        = after_kypag(sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice,sum_dobutky_micnist_v_juice, sum_v_juice)
-
+    sugar_midl, acid_midl, micnist_midl = after_kypag(sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice,
+                                                      sum_dobutky_micnist_v_juice, sum_v_juice)
     print(f"СКУПАЖОВАНЕ З {prod} ПРОДУКТІВ ВИНО БУДЕ МАТИ:\n"
         f"\t\t\tМІЦНОСТІ --- {micnist_midl}%\n"
         f"\t\t\tЦУКРИСТОСТІ --- {sugar_midl}%\n"
         f"\t\t\tКИСЛОТНОСТІ --- {acid_midl}%\n"
         f"\t\t\tЗАГАЛЬНИЙ ОБЄМ --- {sum_v_juice} літрів\n")
 
-
-# main_kypag()

@@ -1,4 +1,5 @@
 import json
+
 from Kursak_ITEA._4_edit_file.edit_func_file import start_edit
 from Kursak_ITEA.help_func import create_list
 
@@ -6,9 +7,9 @@ from Kursak_ITEA.help_func import create_list
 
 def edit_file():
     while True:
-        print("МЕНЮ --- РЕДАГУВАННЯ ФАЙЛІВ --- ")
+        print("\nМЕНЮ --- РЕДАГУВАННЯ ФАЙЛІВ --- ")
         edit_menu = {'1': 'КЛАСИФІКАЦІЯ ВИН',
-                     '2': 'ХАРАКТРИСТИКИ СОКІВ ФРУКТІВ',
+                     '2': 'ДОДАВАННЯ/ ВИДАЛЕННЯ ФРУКТІВ ТА ХАРАКТРИСТИК ЇХ СОКІВ',
                      '0': 'ВИХІД З ПРОГРАМИ'
 }
         create_list(edit_menu)
@@ -16,8 +17,8 @@ def edit_file():
         if a == '1':
             print(" РОЗДІЛ В РОЗРОБЦІ")
         elif a == '2':
-            print("ХАРАКТРИСТИКИ СОКІВ ФРУКТІВ")
-            start_edit
+            print("ДОДАВАННЯ/ ВИДАЛЕННЯ ФРУКТІВ ТА ХАРАКТРИСТИК ЇХ СОКІВ")
+            start_edit()
         elif a == '0':
             print("ВИХІД З ПРОГРАМИ ")
             exit()
