@@ -9,29 +9,44 @@ def fruit_inform():
         fruit_characteristic = json.loads(f.read())
         for key in fruit_characteristic.keys():
             slice_fruit = ((fruit_characteristic.get(key)).split("/"))[slice(1)]
+
             #  роздруковуються фрукти
             print(key + " - " + str(slice_fruit))
 
     while True:
         try:
             k = ""
-            kil = input("\nВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/   ")
+            kil = input("\nВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/\t\t\t")
             kil_fruktiv = kil.split("/")
             for i in kil_fruktiv:
-                if i in fruit_characteristic.keys():
-                    pass
-                else:
+                if i not in fruit_characteristic.keys():
                     k = k + i + ', '
-            break
+                    # return k
+            if k != "":
+                print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
+                      f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
+                continue
+            else:
+                break
+
+            #         # pass
+            #         break
+            #     else:
+            #         k = k + i + ', '
+            # # break
+            # continue
         except AttributeError:
             print("ВВЕДІТЬ ДАНІ У ВКАЗАНОМУ ФОРМАТІ")
-            return k
+        return k
 
     #  вихід з програми якщо введені ЧИСЛА номерів фруктів відрізняються від вказаного формату
-    if k != "":
-        print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
-              f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
-        exit()
+    # if k != "":
+    #     print(f"НОМЕР(А) ФРУКТУ(ІВ) --- {k} --- ВІДСУТНІ(Й) В НАДАНОМУ ПЕРЕЛІКУ АБО ЗАПИС НЕ ВІДПОВІДАЄ ФОРМАТУ."
+    #           f"ВВЕДІТЬ ДАНІ У ВІДПОВІДНОСТІ З ПЕРЕЛІКОМ ")
+    #     return
+    # elif k == "":
+    #     pass
+    #     # exit()
 
     arr_fruit = []
     # створюється масив даних з введених фруктів
@@ -109,7 +124,7 @@ def sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist, k_acid, acid_wine,
 def add_acid(k_acid, acid_wine,v_wine_end):
     if k_acid < acid_wine:
         plus_acid = v_wine_end * (acid_wine - k_acid)
-        print(f"ЩОБ ОТРИМАТИ ВИНО КИСЛОТНОСТЮ { acid_wine}% ПОТРІБНО ДО НЬОГО ДОДАТИ {plus_acid}грам ЛИМОННОЇ КИСЛОТИ\n"
+        print(f"ЩОБ ОТРИМАТИ ВИНО КИСЛОТНОСТЮ { acid_wine}% ПОТРІБНО ДО НЬОГО ДОДАТИ {round(plus_acid,2)}грам ЛИМОННОЇ КИСЛОТИ\n"
               f"ПРИ ЦЬОМУ РОЗРАХОВАНИЙ ОБЄМ ВИНА ЗБІЛЬШИТЬСЯ НА {round((0.6*plus_acid/1000), 2)} літрів")
     else:
         plus_acid = 0
@@ -126,4 +141,4 @@ def all_func_calc_wine():
           f" {mas_sug} грам ЦУКРУ ТА ДОБАВИТИ {v_all_water} літрів ВОДИ \n"
           f"ОБЄМ ГОТОВОГО ВИНА СТАНОВИТИМЕ ПРИБЛИЗНО {v_wine_end} літрів")
 
-all_func_calc_wine()
+# all_func_calc_wine()

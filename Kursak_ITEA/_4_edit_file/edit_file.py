@@ -1,5 +1,7 @@
 import json
-from Kursak_ITEA._4_edit_file.edit_func_file import create_list
+from Kursak_ITEA._4_edit_file.edit_func_file import start_edit
+from Kursak_ITEA.help_func import create_list
+
 
 
 def edit_file():
@@ -14,7 +16,8 @@ def edit_file():
         if a == '1':
             print(" РОЗДІЛ В РОЗРОБЦІ")
         elif a == '2':
-            pass
+            print("ХАРАКТРИСТИКИ СОКІВ ФРУКТІВ")
+            start_edit
         elif a == '0':
             print("ВИХІД З ПРОГРАМИ ")
             exit()

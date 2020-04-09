@@ -73,27 +73,28 @@ class Del_Fruits(Fruite_add):
 
 
 #  початок основої програми
-while True:
-    print("\n МЕНЮ")
-    dict_action = {"1": "ДОДАТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
-                   "2": "ВИДАЛИТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
-                   "0": "ВИХІД"
-                   }
-    print(create_list(dict_action))
-    answer = input("\nОБЕРІТЬ, ЩО ПОТРІБНО ЗРОБИТИ З МЕНЮ ВИЩЕ\t")
-    if answer == '1':
-        print("ВНЕСЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
-        fruit_n = Fruite_add(name="", sugar="", acid="", outjuice="")
-        fruit_n.add_to_file()
-    elif answer == '2':
-        print("ВИДАЛЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
-            json_dict_text = json.loads(f.read())
-        print(f"\n {create_list(json_dict_text)}")
-        fruit_remove = Del_Fruits(key="")
-        fruit_remove.del_from_file()
-    elif answer == '0':
-        exit()
-    else:
-        print("ЗРОБІТЬ СВІЙ ВИБІР")
+def start_edit():
+    while True:
+        print("\n МЕНЮ")
+        dict_action = {"1": "ДОДАТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
+                       "2": "ВИДАЛИТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
+                       "0": "ВИХІД"
+                      }
+        print(create_list(dict_action))
+        answer = input("\nОБЕРІТЬ, ЩО ПОТРІБНО ЗРОБИТИ З МЕНЮ ВИЩЕ\t")
+        if answer == '1':
+            print("ВНЕСЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
+            fruit_n = Fruite_add(name="", sugar="", acid="", outjuice="")
+            fruit_n.add_to_file()
+        elif answer == '2':
+            print("ВИДАЛЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
+            with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+                json_dict_text = json.loads(f.read())
+            print(f"\n {create_list(json_dict_text)}")
+            fruit_remove = Del_Fruits(key="")
+            fruit_remove.del_from_file()
+        elif answer == '0':
+            exit()
+        else:
+            print("ЗРОБІТЬ СВІЙ ВИБІР")
 
