@@ -25,7 +25,6 @@ for i in range(long_coolums):
             space = (long_1_zig - long_coolums - i) * " "
             sum = e + space
             a.extend(sum)
-            # c = " ".join(a)
         print(" ".join(a))
     if 0 < i <= long_coolums - 2:
         for j in range(i, len(list_sent), long_1_zig):

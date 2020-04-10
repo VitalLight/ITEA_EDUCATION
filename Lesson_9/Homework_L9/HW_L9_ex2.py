@@ -33,8 +33,8 @@ def inner_json_file():
 dict_key_pas = inner_json_file()  # пайтон бачить  як словник
 
 try:
-    key in dict_key_pas
-    print(f"OK. WELCOME. Your pasword {dict_key_pas[key]}")
+    if key in dict_key_pas:
+        print(f"OK. WELCOME. Your pasword {dict_key_pas[key]}")
 except KeyError as e:
     print(" Введений користувач відсутній у базі даних. Створіть свого користувача та пароль")
     answer = input(" ВВЕСТИ ІНШОГО КОРИСТУВАЧА ---1, СТВОРИТИ НОВОГО КОРИСТВУВАЧА --- 2 \t\t\t")

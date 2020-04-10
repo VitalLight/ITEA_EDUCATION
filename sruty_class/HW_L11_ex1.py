@@ -41,10 +41,10 @@ class Notebok:
     def __init__(self):
         # В даній змінній ми будемо зберігати список об'єктів(не словників) контактів(імя, номер і тд)
         self.list_of_contacts = list()
-    
+
     def add_new_contact(self):
         """
-        Тут ми будемо створювати нові контакти. 
+        Тут ми будемо створювати нові контакти.
         1. Попросимо в користувача дані
         2. Створимо об'єкт Contact
         3. Додамо його до списку наших контактів
@@ -62,6 +62,7 @@ class Notebok:
         cont = Contact(f_name, l_name, mail, n_phone, streete, n_house, touwn)
         # додамо його до списку існуючих контактів
         self.list_of_contacts.append(cont) # повертаєтсья сюди після read_contact
+        # print(self.list_of_contacts)
         # запишемо контакти у файл (за допомогою self ми викликаємо іншу функцію в цьому класі, це як допоміжне слово щоб нас зрозуміли що ми хочемо)
         self.write_contacts_to_file()
 
@@ -111,7 +112,7 @@ class Notebok:
                 "phone": contact.phone,
                 "misto": contact.misto,
                 "house": contact.house,
-                "streete": contact.streete 
+                "streete": contact.streete
             }
             mas_dict.append(dict_contact)
 
@@ -124,3 +125,7 @@ notebook.add_new_contact()
 print(notebook.list_of_contacts[]) #  ??? як це читаєтсья ? мене збиває self в .list_of_contacts.
                                         # не розумію як два обєкти notebook та list_of_contacts між собою поєднуються.
 
+""""
+??? чому після створення обєкту Contact програма звертаєтсья до def __str__(self), про це ніде не вказано!
+
+"""
