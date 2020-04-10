@@ -6,18 +6,20 @@ from Kursak_ITEA.help_func import create_list, zagalni_dani
 
 def fruit_inform():
 
-    #  показати список фруктів
+    # Показати список фруктів
     with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
         fruit_characteristic = json.loads(f.read())
         for key in fruit_characteristic.keys():
             slice_fruit = ((fruit_characteristic.get(key)).split("/"))[slice(1)]
-            #  роздруковуються фрукти
+            # Роздруковуються фрукти
             print(key + " - " + str(slice_fruit))
-
     while True:
         try:
             k = ""
-            kil = input("\nВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/\t\t\t")
+            kil = input("\nВВЕДІТЬ НОМЕРА ФРУКТІВ МАЙБУТНЬОГО ВИНА У ФОРМАТІ Х/Х/Х/ ( 0 - ВИХІД З ПРОГРАМИ)\t\t\t")
+            if kil == "0":
+                print("ВИХІД З ПРОГРАМИ")
+                exit()
             kil_fruktiv = kil.split("/")
             for i in kil_fruktiv:
                 if i not in fruit_characteristic.keys():
@@ -33,7 +35,7 @@ def fruit_inform():
         return k
 
     arr_fruit = []
-    # ВВОДЯТЬСЯ ДАНІ ЩОДО ЦУКРИСТОСТІ, КИСЛОТНОСТІ ТА ОБЄМУ СОКУ КОЖНОГО ФРУКТУ
+    # Вводяться дані щодо цукристості, кислотності та обєму соку кожного фрукту
     sum_acid = 0
     sum_sugar = 0
     sum_v_juice = 0
@@ -56,9 +58,9 @@ def fruit_inform():
     k_sugar = round((sum_sugar/sum_v_juice), 2)
     k_micnist_j = round((sum_micnist_j/ sum_v_juice), 2)
     print(f"\n ВИНО БУДЕ З НАСТУПНИХ ФРУКТІВ {''.join(arr_fruit)}")
-    print(f"\n СУМІШ СОКІВ ЦИХ ФРУКТІВ МАЄ У СВОЄМУ СКЛАДІ \n"
+    print(f"\n СУМІШ СОКІВ ЦИХ ФРУКТІВ МАЄ У СВОЄМУ СКЛАДІ:\n"
           f"\t -ТИТРОВАНИХ КИСЛОТ - {k_acid}% \n"
-          f"\t - ЦУКРУ - {k_sugar}% \n"
+          f"\t - ЦУКРИСТІСТЬ - {k_sugar}% \n"
           f"\t - МІЦНОСТІ - {k_micnist_j}% \n"
           f"\t - ЗАГАЛЬНИЙ ОБЄМ СОКУ {sum_v_juice} \n")
     return k_acid, k_sugar, sum_v_juice, k_micnist_j
@@ -77,7 +79,7 @@ def main_exec_():
     return acid_wine, micnist, shugar_w
 
 
-#  функція визначає скільки потрібно добавити ВОДИ до соку/сусла, щоб отримати необхідну кислотність
+# Функція визначає скільки потрібно добавити ВОДИ до соку/сусла, щоб отримати необхідну кислотність
 def corr_acid(k_acid, acid_wine, sum_v_juice):
     while True:
         try:
@@ -91,7 +93,7 @@ def corr_acid(k_acid, acid_wine, sum_v_juice):
             acid_wine = float(input("КИСЛОТНІСТЬ ВИНА МАЄ БУТИ БІЛЬШЕ НУЛЯ. СКОРЕКТУЙТЕ ЗНАЧЕННЯ, %\t\t\t").replace(',', '.'))
             continue
 
-#  рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
+#  Рахується кількість цукру яку потрібно добавити до сусла аби отримати заявлену міцність
 def sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist, k_acid, acid_wine, v_water_juice):
     sugar_to_micnosti = ((micnist) - (k_sugar/2) - k_micnist) * 20
     mas_sug = round(((sugar_to_micnosti + shugar_w * 10) * v_water_juice), 2)
@@ -103,7 +105,7 @@ def sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist, k_acid, acid_wine,
     return mas_sug, v_wine_end
 
 
-#  функція для знаходження кількості кислоти для підкислення вина
+#  Функція для знаходження кількості кислоти для підкислення вина
 def add_acid(k_acid, acid_wine,v_wine_end):
     if k_acid < acid_wine:
         plus_acid = v_wine_end * (acid_wine - k_acid)

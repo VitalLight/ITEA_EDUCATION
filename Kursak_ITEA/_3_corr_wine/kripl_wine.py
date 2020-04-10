@@ -8,7 +8,7 @@ def main_kripl():
         try:
             v_kripl_wine = float(input("ОБЄМОМ, л\t\t\t").replace(',', '.'))
             micnist_kripl_wine = float(input("МІЦНІСТЮ, %\t\t\t").replace(',', '.'))
-            alc_for_kripl = float(input("\nВВЕДІТЬ % ЕТИЛОВОГО СПИРТУ В РОЗЧИНІ ДЛЯ КРІПЛЕННЯ \t\t\t").replace(',', '.'))
+            alc_for_kripl = float(input("\nВВЕДІТЬ % ЕТИЛОВОГО СПИРТУ РОЗЧИНУ ДЛЯ КРІПЛЕННЯ \t\t\t").replace(',', '.'))
             product = input("\nВВЕДІТЬ НАЗВУ БАЗОВОГО ПРОДУКТУ З ЯКОГО БУДЕМО СТВОРЮВАТИ КРІПЛЕНЕ ВИНО \t\t\t")
             print(" ВКАЖІТЬ ЙОГО ХАРАКТЕРИСТИКИ")
             micnist, sugar, acid = dani_micnocti_()

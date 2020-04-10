@@ -75,6 +75,7 @@ class Del_Fruits(Fruite_add):
                     del del_txt_text[row + 1]
                     del del_txt_text[row]
                 k += 1
+        #  Запис в txt файл
         with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'w') as f:
             f.writelines(del_txt_text)
 

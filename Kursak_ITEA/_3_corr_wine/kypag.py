@@ -31,7 +31,7 @@ def repag_wine_and_juice():
                 break
         except ValueError:
             print("\nВСІ ПОЛЯ ПОВИННІ МАТИ ЧИСЛОВІ ЗНАЧЕННЯ. ПОВТОРІТЬ ВСЕ СПОЧАТКУ ДЛЯ ОСТАНЬОГО ВВЕДЕНОГО ПРОДУКТУ ")
-    return sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice,sum_dobutky_micnist_v_juice, sum_v_juice, prod
+    return sum_dobutky_sugar_v_juice, sum_dobutky_acid_v_juice, sum_dobutky_micnist_v_juice, sum_v_juice, prod
 
 
 # Значення після купажу
@@ -52,4 +52,3 @@ def main_kypag():
         f"\t\t\tЦУКРИСТОСТІ --- {sugar_midl}%\n"
         f"\t\t\tКИСЛОТНОСТІ --- {acid_midl}%\n"
         f"\t\t\tЗАГАЛЬНИЙ ОБЄМ --- {sum_v_juice} літрів\n")
-
