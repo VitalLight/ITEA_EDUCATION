@@ -1,8 +1,8 @@
-from Kursak_ITEA._0_enter_in_prog.enter_password import enter
-from Kursak_ITEA._1_klasificacia_wine.clasification import main_wine_f
-from Kursak_ITEA._2_calculation.calc import all_func_calc_wine
-from Kursak_ITEA._3_corr_wine.repear_wine import repear_wine
-from Kursak_ITEA._4_edit_file.edit_file import edit_file
+from Kursak_ITEA.0_enter_in_prog.enter_password import enter
+from Kursak_ITEA.1_klasificacia_wine.clasification import main_wine_f
+from Kursak_ITEA.2_calculation.calc import all_func_calc_wine
+from Kursak_ITEA.3_corr_wine.repear_wine import repear_wine
+from Kursak_ITEA.4_edit_file.edit_file import edit_file
 from Kursak_ITEA.help_func import create_list
 
 

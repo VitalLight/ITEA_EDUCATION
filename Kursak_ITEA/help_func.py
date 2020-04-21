@@ -5,7 +5,7 @@ def create_list(dict):
 
 
 def choice_for_reed(a):
-    with open(r'd:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\' + a + '.txt','r') as kind_wine:
+    with open(r'1_klasificacia_wine\\' + a + '.txt','r') as kind_wine:
         text_w = kind_wine.read()
         print(text_w)
 

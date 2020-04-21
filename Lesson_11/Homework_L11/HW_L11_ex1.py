@@ -121,6 +121,5 @@ class Notebok:
 notebook = Notebok()
 notebook.read_contact()
 notebook.add_new_contact()
-print(notebook.list_of_contacts[]) #  ??? як це читаєтсья ? мене збиває self в .list_of_contacts.
-                                        # не розумію як два обєкти notebook та list_of_contacts між собою поєднуються.
+print(notebook.list_of_contacts[])
 
