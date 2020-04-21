@@ -4,8 +4,14 @@
 
 """
 import roman
-a = int(input("Enter your number\t"))
-print(roman.toRoman(a))
+while True:
+    try:
+        a = int(input("Enter your number\t"))
+        print(roman.toRoman(a))
+
+    except ValueError:
+        print("Enter number! not Word")
+        exit()
 
 
 
