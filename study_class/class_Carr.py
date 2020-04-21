@@ -75,6 +75,7 @@ class Speed():
             print("HA-HA, Your car is slow")
         print(f"Speed your avto is {self.speed} km/h")
         print(f"Speed your avto is {self} km/h - second print")  #  ось тут є різниця між попереднім прінтом-  в self
+        print(f"Speed your avto is {self} km/h - second print")  #  ось тут є різниця між попереднім прінтом-  в self
                                                                  # вкладується все, що після return
 
 

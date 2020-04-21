@@ -1,7 +1,8 @@
 from Kursak_ITEA.help_func import create_list
-from Kursak_ITEA._3_corr_wine.kypag import main_kypag
-from Kursak_ITEA._3_corr_wine.kripl_wine import main_kripl
-from Kursak_ITEA._3_corr_wine.acid_less_juice import main_less_acid_juice
+from Kursak_ITEA.corr_wine.kypag import main_kypag
+from Kursak_ITEA.corr_wine.kripl_wine import main_kripl
+from Kursak_ITEA.corr_wine.acid_less_juice import main_less_acid_juice
+from Kursak_ITEA.corr_wine.kypag_condition import condition_kupag
 
 
 def repear_wine():
@@ -16,19 +17,20 @@ def repear_wine():
         create_list(menu)
         answer = input("\t\t\t\t\t\tВАШ ВИБІР ------- ")
         if answer == '1':
-            print("КУПАЖ ВИН АБО СОКІВ")
+            print("\nКУПАЖ ВИН АБО СОКІВ")
             main_kypag()
         elif answer == '2':
-            print("КУПАЖ ЗБРОЖЕНО-СПИРТОВОГО СОКУ/ВИНА ДО ЗАДАНИХ УМОВ СПИРТОВИМ РОЗЧИНОМ")
+            print("\nКУПАЖ ЗБРОЖЕНО-СПИРТОВОГО СОКУ/ВИНА ДО ЗАДАНИХ УМОВ СПИРТОВИМ РОЗЧИНОМ")
+            condition_kupag()
         elif answer == '3':
-            print("КРІПЛЕННЯ ВИНА СПИРТОВИМ РОЗЧИНОМ")
+            print("\nКРІПЛЕННЯ ВИНА СПИРТОВИМ РОЗЧИНОМ")
             main_kripl()
         elif answer == '4':
-            print("ЗМЕНШЕННЯ КИСЛОТНОСТІ ОСНОВНОГО СОКУ, СОКОМ З МЕНШОЮ КИСЛОТНІСТЮ АБО ВОДОЮ")
+            print("\nЗМЕНШЕННЯ КИСЛОТНОСТІ ОСНОВНОГО СОКУ, СОКОМ З МЕНШОЮ КИСЛОТНІСТЮ АБО ВОДОЮ")
             main_less_acid_juice()
         if answer == '5':
-            print("ВИХІД В ПОПЕРЕДНЄ МЕНЮ")
+            print("\nВИХІД В ПОПЕРЕДНЄ МЕНЮ")
             return
         elif answer == '0':
-            print("ВИХІД З ПРОГРАМИ")
+            print("\nВИХІД З ПРОГРАМИ")
             exit()

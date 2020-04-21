@@ -1,46 +1,47 @@
 import json
 from Kursak_ITEA.help_func import create_list
 
-class Fruite_add:
+charact_fruits = 'calculation\\charact_fruits.json'
+charact_prod = 'klasificacia_wine\\charact_prod.txt'
 
-    def __init__(self, name, sugar, acid, outjuice):
+
+class Fruiteadd:
+
+    def __init__(self):
         self.name = input("ВКАЖІТЬ НАЗВУ ФРУКТУ\t\t\t")
         self.sugar = input("ВКАЖІТЬ ВМІСТ ЦУКРІВ, %\t\t\t")
         self.acid = input("ВКАЖІТЬ ВМІСТ ТИТРОВАНИХ КИСЛОТ, %\t\t\t")
         self.outjuice = input("ВКАЖІТЬ ВИХІД СОКУ ІЗ СВІЖИХ ФРУКТІВ, %\t\t\t")
 
     def add_to_file(self):
-
         # Відкриваєм json файл для читанння
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+        with open(charact_fruits, 'r') as f:
             json_dict_text = json.loads(f.read())
         key = str(len(json_dict_text) + 1)
-        new_frukt = {key: f"{(self.name).upper()}\t/ вміст цукру в соці {self.sugar}, кислотність {self.acid}, "
+        new_frukt = {key: f"{self.name.upper()}\t/ вміст цукру в соці {self.sugar}, кислотність {self.acid}, "
                           f" вихід соку зі свіжих плодів {self.outjuice}%"}
 
-         # Запис в json файл для запису
+        # Запис в json файл для запису
         json_dict_text.update(new_frukt)
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'w') as f:
+        with open(charact_fruits, 'w') as f:
             json.dump(json_dict_text, f)
-        print(create_list(json_dict_text))
+        create_list(json_dict_text)
 
-        # Відкриваємо txt файл для читання
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'r') as f:
-            txt_text = f.read()
-        new_txt_text = f"{(self.name).capitalize()}\t\t\t/\t\t{self.sugar}\t\t/\t\t{self.acid}\t\t/\t\t{self.outjuice}\t\t/\n" \
+        # Створюємо нову інформацію та відкриваємо txt файл для її запису
+        new_txt_text = f"{self.name.capitalize()}\t\t\t/\t\t{self.sugar}\t\t/\t\t{self.acid}\t\t/" \
+                       f"\t\t{self.outjuice}\t\t/\n" \
                        f"-----------------------------------------------------------------------------/\n"
-        # Відкриваємо txt файл для запису
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'a+') as f:
+        with open(charact_prod, 'a+') as f:
             f.write(new_txt_text)
 
 
-class Del_Fruits(Fruite_add):
+class DelFruits:
 
-    def __init__(self, key):
+    def __init__(self):
         self.key = input("ВВЕДІТЬ КЛЮЧ ФРУКТУ\t\t\t")
 
     def del_from_file(self):
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+        with open(charact_fruits, 'r') as f:
             json_dict_text = json.loads(f.read())
             if self.key not in json_dict_text.keys():
                 print("ВИХІД У ПОТОЧНЕ МЕНЮ, ОСКІЛЬКИ НЕ ВКАЗАНО ЖОДНОГО НАЯВНОГО КЛЮЧА")
@@ -59,12 +60,12 @@ class Del_Fruits(Fruite_add):
             new_dict.update(new_dict)
 
         #  Запис в json файл
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'w') as f:
+        with open(charact_fruits, 'w') as f:
             json.dump(new_dict, f)
-        print(create_list(new_dict))
+        create_list(new_dict)
 
         # Відкрити на прочитання тхт файл . знайти в ньому ключове слово  фрукта
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'r') as f:
+        with open(charact_prod, 'r') as f:
             del_txt_text = f.readlines()
 
             # Пошук по елементах масиву пошукового слова
@@ -76,7 +77,7 @@ class Del_Fruits(Fruite_add):
                     del del_txt_text[row]
                 k += 1
         #  Запис в txt файл
-        with open(r'D:\\Python_ITed\\Kursak_ITEA\\_1_klasificacia_wine\\charact_prod.txt', 'w') as f:
+        with open(charact_prod, 'w') as f:
             f.writelines(del_txt_text)
 
 
@@ -84,22 +85,26 @@ class Del_Fruits(Fruite_add):
 def start_edit():
     while True:
         print("\n МЕНЮ --- ДОДАВАННЯ/ ВИДАЛЕННЯ ФРУКТІВ ТА ХАРАКТРИСТИК ЇХ СОКІВ ---")
-        dict_action = {"1": "ДОДАТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
-                       "2": "ВИДАЛИТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ",
-                       "0": "ВИХІД"}
-        print(create_list(dict_action))
+        dict_action = {'1': 'ДОДАТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ',
+                       '2': 'ВИДАЛИТИ ФРУКТ ТА ЙОГО ХАРАКТЕРИСТИКИ',
+                       '3': 'ВИХІД В ПОПЕРЕДНЄ МЕНЮ',
+                       '0': 'ВИХІД'}
+        create_list(dict_action)
         answer = input("\nОБЕРІТЬ, ЩО ПОТРІБНО ЗРОБИТИ З МЕНЮ ВИЩЕ\t")
         if answer == '1':
             print("ВНЕСЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
-            fruit_n = Fruite_add(name="", sugar="", acid="", outjuice="")
+            fruit_n = Fruiteadd()
             fruit_n.add_to_file()
         elif answer == '2':
             print("ВИДАЛЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
-            with open(r'D:\\Python_ITed\\Kursak_ITEA\\_2_calculation\\charact_fruits.json', 'r') as f:
+            with open(charact_fruits, 'r') as f:
                 json_dict_text = json.loads(f.read())
-            print(f"\n {create_list(json_dict_text)}")
-            fruit_remove = Del_Fruits(key="")
+            f"\n {create_list(json_dict_text)}"
+            fruit_remove = DelFruits()
             fruit_remove.del_from_file()
+        elif answer == '3':
+            print("ВИХІД В ПОПЕРЕДНЄ МЕНЮ")
+            return
         elif answer == '0':
             print("ВИХІД З ПРОГРАМИ")
             exit()

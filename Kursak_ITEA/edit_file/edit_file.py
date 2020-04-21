@@ -1,6 +1,6 @@
-import json
 
-from Kursak_ITEA._4_edit_file.edit_func_file import start_edit
+
+from Kursak_ITEA.edit_file.edit_func_file import start_edit
 from Kursak_ITEA.help_func import create_list
 
 

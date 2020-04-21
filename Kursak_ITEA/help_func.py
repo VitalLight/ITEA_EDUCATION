@@ -1,21 +1,22 @@
 
-def create_list(dict):
-    for i in dict:
-        print(f"{i} - {dict.get(i)}")
+
+def create_list(dictt):
+    for i in dictt:
+        print(f"{i} - {dictt.get(i)}")
 
 
 def choice_for_reed(a):
-    with open(r'1_klasificacia_wine\\' + a + '.txt','r') as kind_wine:
+    with open(r'klasificacia_wine\\' + a + '.txt', 'r') as kind_wine:
         text_w = kind_wine.read()
         print(text_w)
 
 
-def sum_pokaznuk_na_obiem (a, b, c):
+def sum_pokaznuk_na_obiem(a, b, c):
     c = c + round((a * b), 2)
     return c
 
 
-def midl_value (a, b):
+def midl_value(a, b):
     c = round((a / b), 2)
     return c
 
@@ -23,8 +24,8 @@ def midl_value (a, b):
 def zagalni_dani():
     sugar = float(input("\n\t\t\tВВЕДІТЬ ВМІСТ ЦУКРУ, %  \t\t\t\t\t\t").replace(',', '.'))
     acid = float(input("\t\t\t\tВВЕДІТЬ КІЛЬКІСТЬ ТИТРОВАНИХ КИСЛОТ, %\t\t\t").replace(',', '.'))
-    micnist = float(input("\t\t\t\tВВЕДІТЬ МІЦНІСТЬ, %\t\t\t").replace(',', '.'))
-    v_juice = float(input("\t\t\t\t\tВВЕДІЬ ОБЄМ, л\t\t\t\t").replace(',', '.'))
+    micnist = float(input("\t\t\t\t\tВВЕДІТЬ МІЦНІСТЬ, %\t\t\t").replace(',', '.'))
+    v_juice = float(input("\t\t\t\t\t\tВВЕДІЬ ОБЄМ, л\t\t\t\t").replace(',', '.'))
     return sugar, acid, micnist, v_juice
 
 

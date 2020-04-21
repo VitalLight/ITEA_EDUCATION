@@ -4,11 +4,12 @@ from Kursak_ITEA.help_func import dani_micnocti_, zagalni_dani, spurt_in_wine, s
 def condition_kupag():
     print("ПРОГРАМА РОЗРАХУНКУ КУПАЖУ ЗБРОЖЕНО-СПИРТОВОГО СОКУ ДО УМОВ\n")
     while True:
-        print(" ВКАЖІТЬ ХАРАКТЕРИСТИКИ ЯКИМ МАЄ БУТИ ГОТОВЕ КУПАЖНЕ ВИНО")
+        print(" ВКАЖІТЬ ХАРАКТЕРИСТИКИ ЯКИМ МАЄ БУТИ ГОТОВЕ КУПАЖНЕ ВИНО:")
         try:
             sugar, acid, micnist, v_wine = zagalni_dani()
-            procent_spurty = float(input("\n\t\t\t\tВВЕДІТЬ ДОЛЮ ЕТИЛОВОГО СПИРТУ В РОЗЧИНІ, %\t\t\t").replace(',', '.'))
-            print(" \nВВЕДІТЬ ХАРАКТЕРИСТИКИ ЗБРОЖЕНО-СПИРТОВОГО СОКУ/ВИНА")
+            procent_spurty = float(input("\n\t\t\t\tВВЕДІТЬ ДОЛЮ ЕТИЛОВОГО СПИРТУ В"
+                                         " РОЗЧИНІ, %\t\t\t").replace(',', '.'))
+            print(" \nВВЕДІТЬ ХАРАКТЕРИСТИКИ ЗБРОЖЕНО-СПИРТОВОГО СОКУ/ВИНА:")
 
             micnist_juice, sugar_juice, acid_juice = dani_micnocti_()
 
@@ -29,11 +30,15 @@ def condition_kupag():
 
     # Розхід бурякового цукру
     v_sugar_wine, sugar_wine = sugar_in_wine(v_wine, sugar, v_zbrog_juice, sugar_juice)
+    if sugar_wine < 0:
+        print(f"ЗАЯВЛЕНЕ ВИНО НЕ МОЖЛИВО ОТРИМАТИ ЧЕРЕЗ ВИСОКИЙ ВМІСТ ЦУКРУ В ЗБРОЖЕНО-СПИРТОВОГО СОЦІ. "
+              f"СКУПАЖОВАНЕ ВИНО БУДЕ СОЛОДШЕ НА +{abs(sugar_wine) /v_wine }%")
+        return
 
     # Розхід води
     water = add_water(v_wine, acid, v_zbrog_juice, acid_juice, spurt, v_sugar_wine)
 
-    print(f"'\n ДЛЯ ВИГОТОВЛЕННЯ {v_wine}л ВИНА, ПОТРІБНО:\n"
+    print(f"\n ДЛЯ ВИГОТОВЛЕННЯ {v_wine}л ЗАЯВЛЕНОГО ВИНА, ПОТРІБНО:\n"
           f" {v_zbrog_juice}літрів ЗБРОЖЕНО-СПИРТОВОГО СОКУ \n"
           f" \t{spurt}літрів {procent_spurty}% РОЗЧИНУ СПИРТУ \n"
           f" \t\t{sugar_wine}кг ЦУКРУ,\n"
