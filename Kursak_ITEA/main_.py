@@ -7,6 +7,7 @@ from Kursak_ITEA.help_func import create_list
 
 
 def main_pro():
+    password = enter()
     while True:
         print("\nПРОГРАМА РОЗРАХУНКУ БУДЕ КОРИСНА ТИМ У КОГО Є БАЖАННЯ ТА СИРОВИНА ДЛЯ ВИГОТОВЛЕННЯ ДОМАШНЬОГО ВИНА\n"
               "ВОНА Є КОРИСНУЮ ДЛЯ РОЗРАХУНКІВ ЙОГО ОСНОВНИХ СКЛАДОВИХ")
@@ -40,6 +41,5 @@ def main_pro():
                 exit()
 
 
-password = enter()
 main_pro()
 
