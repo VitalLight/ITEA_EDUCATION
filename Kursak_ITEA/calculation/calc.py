@@ -125,7 +125,6 @@ def all_func_calc_wine():
     acid_wine, micnist, shugar_w = main_exec_(k_micnist_j)
     v_water_juice, v_all_water = corr_acid(k_acid, acid_wine, sum_v_juice)
     mas_sug, v_wine_end = sugar(shugar_w, micnist, k_sugar, sum_v_juice, k_micnist_j, k_acid, acid_wine, v_water_juice)
-    # plus_acid = add_acid(k_acid, acid_wine, v_wine_end)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     print(f"ЩОБ ОТРИМАТИ ВИНО МІЦНОСТЮ {micnist}% ТА {acid_wine}% КИСЛОТНІСТЮ ПОТРІБНО ДОДАТКОВО ВИКОРИСТАТИ:\n"
           f" {mas_sug} грам ЦУКРУ ТА ДОБАВИТИ {v_all_water} літрів ВОДИ \n"
           f"ОБЄМ ГОТОВОГО ВИНА СТАНОВИТИМЕ ПРИБЛИЗНО {v_wine_end} літрів")

@@ -2,6 +2,7 @@
 
 from Kursak_ITEA.edit_file.edit_func_file import start_edit
 from Kursak_ITEA.help_func import create_list
+from Kursak_ITEA.edit_file.edit_clasification_wine import edit_clasif_wine
 
 
 def edit_file():
@@ -14,7 +15,7 @@ def edit_file():
         create_list(edit_menu)
         a = input("\t\t\t\t\t\tВАШ ВИБІР----- ")
         if a == '1':
-            print(" РОЗДІЛ В РОЗРОБЦІ")
+            edit_clasif_wine()
         elif a == '2':
             print("ДОДАВАННЯ/ ВИДАЛЕННЯ ФРУКТІВ ТА ХАРАКТРИСТИК ЇХ СОКІВ")
             start_edit()

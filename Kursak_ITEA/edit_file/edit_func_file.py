@@ -38,7 +38,7 @@ class Fruiteadd:
 class DelFruits:
 
     def __init__(self):
-        self.key = input("ВВЕДІТЬ КЛЮЧ ФРУКТУ\t\t\t")
+        self.key = input("\nВВЕДІТЬ НОМЕР ФРУКТУ\t\t\t")
 
     def del_from_file(self):
         with open(charact_fruits, 'r') as f:
@@ -98,8 +98,7 @@ def start_edit():
         elif answer == '2':
             print("ВИДАЛЕННЯ ФРУКТУ ТА ЙОГО ОСНОВНИХ ХАРАКТЕРИСТИК")
             with open(charact_fruits, 'r') as f:
-                json_dict_text = json.loads(f.read())
-            f"\n {create_list(json_dict_text)}"
+                create_list(json.loads(f.read()))
             fruit_remove = DelFruits()
             fruit_remove.del_from_file()
         elif answer == '3':
