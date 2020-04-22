@@ -57,7 +57,7 @@ while True:
             unshufr_text, key = unshufr(text, key)
 
             #  збереження розашифрованої інформації у файл
-            name_unsekr_file = input("Вкажіть назву файлу для зберігання розашифров. інформації   ")
+            name_unsekr_file = input("Вкажіть назву файлу для зберігання розшифров. інформації   ")
             new_w_f = open(r'd:\\Python_ITed\\Lesson_8\\Homework_L8\\to_password_packedg\\hw_L8_ex_3\\'
                            + name_unsekr_file + '.txt', 'a+')
             new_text = new_w_f.write(unshufr_text)
