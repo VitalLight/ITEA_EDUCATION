@@ -1,13 +1,14 @@
 """"
 Реалізувати шифр Віженера.
 """
+
+
 def shufr(text):
     #  символи для шифрування
     sumbs = "_' .,:;-+1234567890АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя" \
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     l_s = list(sumbs)
     key = input("Введіть КЛЮЧ:  ")
-    l_key = list(key)
 
 #  автоматично коректує довжину ключа
     if len(text) >= len(key):
@@ -46,25 +47,20 @@ def shufr(text):
     secrsms = secrchar_(sms_ind, key_ind)  # масив з індексами для букв(символів) секретного повідомлення
 
 #   створення секретного(зашифрованого) повідомлення- це будуть самі букви/символи
-    def secr_povid_(a,b):
+    def secr_povid_(a, b):
         k = 0
         sec_povidomlenia = []
         for i in range(len(a)):  # ітерація по довжині секретного повідомлення
             for j in range(len(b)):  # ітерація по масиву кількості елем iter(це довжина повідомлення чи паролю)
                 if int(a[i]) >= int(len(b)):  #  порівнюється числове значення a[i] з довжиною повдіомлення len(b)
-
-                    c = int(a[i]) // int(len(b))  # k
-                    k = int(a[i]) - c*int(len(b))  # new
+                    c = int(a[i]) // int(len(b))
+                    k = int(a[i]) - c*int(len(b))
                 elif 0 <= int(a[i]) < int(len(b)):
                     k = int(a[i])  # new
             sec_povidomlenia.append(b[k])
         return sec_povidomlenia
     secr_povid_(secrsms, l_s)
-    sec_chr = secr_povid_(secrsms,l_s) #  масив букв зашифорованого повідомлення
+    sec_chr = secr_povid_(secrsms, l_s) #  масив букв зашифорованого повідомлення
     parol = ''.join(sec_chr)
     return key, parol
-
-
-
-
 
